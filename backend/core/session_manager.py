@@ -9,6 +9,7 @@ class Session:
         self.raw_dataset = None
         self.working_dataset = None
         self.metadata = None
+        self.data_quality = None
         self.profiling_results = None
         self.cleaning_log = []
         self.target_info = None

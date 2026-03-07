@@ -4,6 +4,7 @@ import io
 from fastapi.middleware.cors import CORSMiddleware
 from core.session_manager import SessionManager
 from tools.profiling import extract_metadata
+from tools.data_quality import analyze_data_quality
 
 app = FastAPI()
 
@@ -55,9 +56,12 @@ async def upload_dataset(
     session.working_dataset = df.copy()
 
     session.metadata = extract_metadata(session.raw_dataset)
+    session.data_quality = analyze_data_quality(session.metadata)
+
     return {
         "session_id": session.session_id,
-        "metadata": session.metadata
-        }
+        "metadata": session.metadata,
+        "data_quality": session.data_quality
+    }
 
 
