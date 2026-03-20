@@ -8,9 +8,9 @@ A reference guide for the deterministic data quality checks performed before LLM
 
 | Missing % | Recommendation |
 |-----------|---------------|
-| > 80%     | Recommend **dropping** the column |
-| 20% – 80% | Recommend **imputation** |
-| < 5%      | Low concern |
+| > 50%     | Recommend **dropping** the column |
+| 20% – 50% | Recommend **imputation** |
+| < 20%      | Low concern |
 
 **Example detection output:**
 ```json
