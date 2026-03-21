@@ -125,3 +125,91 @@ def select_columns(metadata, data_quality, top_k=5):
         "skewed_columns": skewed_columns
     }
 
+def generate_univariate_analysis(df, selected):
+    plots = []
+
+    # Numerical → histogram
+    for col in selected["numerical_columns"]:
+        fig = px.histogram(df, x=col, title=f"Distribution of {col}")
+        plots.append(fig.to_json())
+
+    # Categorical → bar chart
+    for col in selected["categorical_columns"]:
+        counts = df[col].value_counts().reset_index()
+        counts.columns = [col, "count"]
+
+        fig = px.bar(counts, x=col, y="count", title=f"{col} Distribution")
+        plots.append(fig.to_json())
+
+    return plots
+
+def generate_bivariate_analysis(df, selected):
+    plots = []
+
+    # numerical vs numerical → scatter
+    for col1, col2 in selected["correlation_pairs"]:
+        fig = px.scatter(df, x=col1, y=col2,
+                         title=f"{col1} vs {col2}")
+        plots.append(fig.to_json())
+
+    return plots
+
+def generate_correlation(df, selected):
+    num_cols = selected["numerical_columns"]
+
+    # if less than 2 numerical columns, no correlation matrix
+    if len(num_cols) < 2:
+        return None
+
+    corr = df[num_cols].corr()
+
+    fig = px.imshow(
+        corr,
+        text_auto=True,
+        title="Correlation Matrix"
+    )
+
+    return fig.to_json()
+
+def generate_target_analysis(df, selected):
+    target = selected["target_column"]
+    problem_type = selected["problem_type"]
+
+    if not target:
+        return None
+
+    plots = []
+
+    # Regression
+    if problem_type == "regression":
+        for col in selected["numerical_columns"]:
+            fig = px.scatter(df, x=col, y=target,
+                             title=f"{col} vs {target}")
+            plots.append(fig.to_json())
+
+    # Classification
+    elif problem_type == "classification":
+        for col in selected["numerical_columns"]:
+            fig = px.box(df, x=target, y=col,
+                         title=f"{col} by {target}")
+            plots.append(fig.to_json())
+
+    return plots
+
+def run_eda(df, metadata, data_quality):
+    # Step 1: Select columns
+    selected = select_columns(metadata, data_quality)
+
+    # Step 2: Generate plots
+    univariate = generate_univariate_analysis(df, selected)
+    bivariate = generate_bivariate_analysis(df, selected)
+    correlation = generate_correlation(df, selected)
+    target_analysis = generate_target_analysis(df, selected)
+
+    return {
+        "selected_columns": selected,
+        "univariate": univariate,
+        "bivariate": bivariate,
+        "correlation": correlation,
+        "target_analysis": target_analysis
+    }
