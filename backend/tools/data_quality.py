@@ -109,10 +109,10 @@ def analyze_data_quality(metadata: dict) -> dict:
 
     return {
         "missing_report": missing_report,
-        "id_columns": id_columns,
-        "skew_columns": skew_columns,
-        "low_variance": low_variance,
-        "high_cardinality": high_cardinality,
+        "id_like_columns": id_columns,
+        "high_skew_columns": skew_columns,
+        "low_variance_columns": low_variance,
+        "high_cardinality_columns": high_cardinality,
         "candidate_targets": candidate_targets
     }
 

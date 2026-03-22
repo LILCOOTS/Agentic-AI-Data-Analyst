@@ -13,14 +13,16 @@ eda.py
 import numpy as np
 import plotly.express as px
 import pandas as pd
+from tools.insights import generate_all_insights
+from tools.llm_insights import get_llm_insights
 
-def select_columns(metadata, data_quality, top_k=5):
-    
+def select_columns(df, metadata, data_quality, top_k=5):
     numerical_cols = metadata["column_types"]["numerical"]
     categorical_cols = metadata["column_types"]["categorical"]
 
     id_cols = set(data_quality["id_like_columns"])
-    high_missing = set(data_quality["high_missing_columns"])
+    high_missing = set(data_quality["missing_report"]["high_missing_columns"])
+    moderate_missing = set(data_quality["missing_report"]["moderate_missing_columns"])
 
     # Step 1: Filter columns
     filtered_numerical = [
@@ -51,7 +53,7 @@ def select_columns(metadata, data_quality, top_k=5):
     selected_categorical = []
     for col in filtered_categorical:
         unique = metadata["unique_counts"][col]
-        if 2 <= unique <= 20:
+        if 2 <= unique <= min(20, int(0.1 * len(df))):
             selected_categorical.append(col)
 
     selected_categorical = selected_categorical[:top_k]
@@ -98,17 +100,28 @@ def select_columns(metadata, data_quality, top_k=5):
     correlation_pairs = []
 
     if len(top_numerical) >= 2:
-        import pandas as pd
+        corr_cols = top_numerical.copy()
 
-        # placeholder (you'll pass df later ideally)
-        # here just pick combinations
+        if target_column and target_column not in corr_cols:
+            corr_cols.append(target_column)
+            
+        corr = df[corr_cols].corr().abs()
+
+        pairs = []
+
         for i in range(len(top_numerical)):
             for j in range(i + 1, len(top_numerical)):
-                correlation_pairs.append(
-                    (top_numerical[i], top_numerical[j])
-                )
+                col1 = top_numerical[i]
+                col2 = top_numerical[j]
 
-        correlation_pairs = correlation_pairs[:3]
+                score = corr.loc[col1, col2]
+                pairs.append((col1, col2, score))
+
+        # sort by strongest correlation
+        pairs = sorted(pairs, key=lambda x: x[2], reverse=True)
+
+        # take top 3 pairs
+        correlation_pairs = [(p[0], p[1]) for p in pairs[:3]]
 
     # Step 6: Skewed columns
     skewed_columns = [
@@ -130,7 +143,7 @@ def generate_univariate_analysis(df, selected):
 
     # Numerical → histogram
     for col in selected["numerical_columns"]:
-        fig = px.histogram(df, x=col, title=f"Distribution of {col}")
+        fig = px.histogram(df, x=df[col].dropna(), title=f"Distribution of {col}")
         plots.append(fig.to_json())
 
     # Categorical → bar chart
@@ -182,9 +195,21 @@ def generate_target_analysis(df, selected):
 
     # Regression
     if problem_type == "regression":
-        for col in selected["numerical_columns"]:
-            fig = px.scatter(df, x=col, y=target,
-                             title=f"{col} vs {target}")
+        # Compute correlation with target
+        corr = df[selected["numerical_columns"] + [target]].corr()[target].abs().sort_values(ascending=False)
+
+        # Select top features (excluding target itself)
+        top_features = corr.index[1:4]
+
+        for col in top_features:
+            corr_value = round(df[col].corr(df[target]), 3)
+
+            fig = px.scatter(df, x=col, y=target, trendline="ols",
+                        title=f"{col} vs {target} (corr={corr_value})",
+                        hover_data=corr)
+
+            fig.add_annotation(text=f"Correlation: {corr_value}", xref="paper", yref="paper", x=0.05, 
+                                y=0.95, showarrow=False)
             plots.append(fig.to_json())
 
     # Classification
@@ -196,9 +221,9 @@ def generate_target_analysis(df, selected):
 
     return plots
 
-def run_eda(df, metadata, data_quality):
+def run_full_analysis(df, metadata, data_quality):
     # Step 1: Select columns
-    selected = select_columns(metadata, data_quality)
+    selected = select_columns(df, metadata, data_quality)
 
     # Step 2: Generate plots
     univariate = generate_univariate_analysis(df, selected)
@@ -206,10 +231,24 @@ def run_eda(df, metadata, data_quality):
     correlation = generate_correlation(df, selected)
     target_analysis = generate_target_analysis(df, selected)
 
+    # Step 3: Generate insights
+    general_insights = generate_all_insights(metadata, data_quality, selected)
+
+    try:
+        llm_insights = get_llm_insights(metadata, data_quality, selected)
+    except Exception:
+        llm_insights = "LLM insights are not available. Please try again later."
+
     return {
         "selected_columns": selected,
-        "univariate": univariate,
-        "bivariate": bivariate,
-        "correlation": correlation,
-        "target_analysis": target_analysis
+        "eda": {
+            "univariate": univariate,
+            "bivariate": bivariate,
+            "correlation": correlation,
+            "target_analysis": target_analysis
+        },
+        "insights": {
+            "general": general_insights,
+            "llm": llm_insights
+        }
     }

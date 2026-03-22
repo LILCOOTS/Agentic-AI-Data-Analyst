@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from core.session_manager import SessionManager
 from tools.profiling import extract_metadata
 from tools.data_quality import analyze_data_quality
-from tools.eda import run_eda
+from tools.eda import run_full_analysis
 
 app = FastAPI()
 
@@ -65,11 +65,11 @@ async def upload_dataset(
         "data_quality": session.data_quality
     }
 
-@app.get("/get_eda")
-async def get_eda(request: Request, session_id: str):
+@app.get("/get_full_analysis")
+async def get_full_analysis(request: Request, session_id: str):
     manager = request.app.state.session_manager
     session = manager.get_session(session_id)
 
-    results = run_eda(session.working_dataset, session.metadata, session.data_quality)
+    results = run_full_analysis(session.working_dataset, session.metadata, session.data_quality)
     return results
 
