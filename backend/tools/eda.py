@@ -195,21 +195,41 @@ def generate_target_analysis(df, selected):
 
     # Regression
     if problem_type == "regression":
-        # Compute correlation with target
-        corr = df[selected["numerical_columns"] + [target]].corr()[target].abs().sort_values(ascending=False)
 
-        # Select top features (excluding target itself)
-        top_features = corr.index[1:4]
+        cols = selected["numerical_columns"]
+
+        # Ensure target is included safely
+        if target not in cols:
+            cols = cols + [target]
+
+        # Drop rows with NaN (VERY IMPORTANT)
+        temp_df = df[cols].dropna()
+
+        if target not in temp_df.columns:
+            return []
+
+        corr_series = temp_df.corr()[target].drop(target)
+
+        # 🔥 Ensure index is valid column names
+        corr_series = corr_series.sort_values(ascending=False)
+
+        top_features = list(corr_series.index[:3])
+        print("Top features:", top_features)
 
         for col in top_features:
+
+            # 🔥 Safety check
+            if col not in df.columns:
+                continue
+
             corr_value = round(df[col].corr(df[target]), 3)
 
-            fig = px.scatter(df, x=col, y=target, trendline="ols",
-                        title=f"{col} vs {target} (corr={corr_value})",
-                        hover_data=corr)
+            fig = px.scatter(df, x=col, y=target, trendline="ols", title=f"{col} vs {target} (corr={corr_value})")
 
-            fig.add_annotation(text=f"Correlation: {corr_value}", xref="paper", yref="paper", x=0.05, 
-                                y=0.95, showarrow=False)
+            fig.add_annotation(
+                text=f"Correlation: {corr_value}", xref="paper", yref="paper", x=0.05, y=0.95, showarrow=False
+            )
+
             plots.append(fig.to_json())
 
     # Classification
@@ -219,7 +239,7 @@ def generate_target_analysis(df, selected):
                          title=f"{col} by {target}")
             plots.append(fig.to_json())
 
-    return plots
+    return plots 
 
 def run_full_analysis(df, metadata, data_quality):
     # Step 1: Select columns
@@ -232,12 +252,7 @@ def run_full_analysis(df, metadata, data_quality):
     target_analysis = generate_target_analysis(df, selected)
 
     # Step 3: Generate insights
-    general_insights = generate_all_insights(metadata, data_quality, selected)
-
-    try:
-        llm_insights = get_llm_insights(metadata, data_quality, selected)
-    except Exception:
-        llm_insights = "LLM insights are not available. Please try again later."
+    insights = generate_all_insights(df, metadata, data_quality, selected)
 
     return {
         "selected_columns": selected,
@@ -247,8 +262,5 @@ def run_full_analysis(df, metadata, data_quality):
             "correlation": correlation,
             "target_analysis": target_analysis
         },
-        "insights": {
-            "general": general_insights,
-            "llm": llm_insights
-        }
+        "insights": insights
     }
