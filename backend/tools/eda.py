@@ -49,11 +49,11 @@ def select_columns(df, metadata, data_quality, top_k=5):
 
     top_numerical = sorted_numerical[:top_k]
 
-    # Step 3: Select categorical
+    # Step 3: Select categorical (filter low-variance: unique > 2 required)
     selected_categorical = []
     for col in filtered_categorical:
         unique = metadata["unique_counts"][col]
-        if 2 <= unique <= min(20, int(0.1 * len(df))):
+        if 3 <= unique <= min(20, int(0.1 * len(df))):
             selected_categorical.append(col)
 
     selected_categorical = selected_categorical[:top_k]
@@ -140,11 +140,21 @@ def select_columns(df, metadata, data_quality, top_k=5):
 
 def generate_univariate_analysis(df, selected):
     plots = []
+    skewed = set(selected.get("skewed_columns", []))
 
-    # Numerical → histogram
+    # Numerical → histogram (+ log-transform plot for skewed cols)
     for col in selected["numerical_columns"]:
         fig = px.histogram(df, x=df[col].dropna(), title=f"Distribution of {col}")
         plots.append(fig.to_json())
+
+        if col in skewed:
+            log_vals = np.log1p(df[col].dropna().clip(lower=0))
+            fig_log = px.histogram(
+                x=log_vals,
+                title=f"Distribution of {col} (log-transformed)",
+                labels={"x": f"log1p({col})"}
+            )
+            plots.append(fig_log.to_json())
 
     # Categorical → bar chart
     for col in selected["categorical_columns"]:
@@ -251,7 +261,7 @@ def run_full_analysis(df, metadata, data_quality):
     correlation = generate_correlation(df, selected)
     target_analysis = generate_target_analysis(df, selected)
 
-    # Step 3: Generate insights
+    # Step 3: Generate all insights (includes feature_importance + recommendations)
     insights = generate_all_insights(df, metadata, data_quality, selected)
 
     return {
