@@ -15,6 +15,7 @@ class Session:
         self.target_info = None
         self.modelling_results = None
         self.insights_history = []
+        self.analysis_cache = None      # cached result of run_full_analysis
 
 class SessionManager:
     def __init__(self):

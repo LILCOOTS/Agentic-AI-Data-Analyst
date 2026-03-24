@@ -138,29 +138,64 @@ def select_columns(df, metadata, data_quality, top_k=5):
         "skewed_columns": skewed_columns
     }
 
+def _make_histogram(values: pd.Series, title: str, x_label: str) -> str:
+    """Compute bins with numpy, render with go.Bar — lowest-level, guaranteed rendering."""
+    import plotly.graph_objects as go
+
+    # Force numeric — catches object-dtype columns that sneak through
+    clean = pd.to_numeric(values, errors="coerce").dropna()
+
+    if clean.empty:
+        fig = go.Figure()
+        fig.update_layout(title=f"{title} (no data)")
+        return fig.to_json()
+
+    counts, edges = np.histogram(clean, bins=50)
+    centers = (edges[:-1] + edges[1:]) / 2   # float64 bin midpoints
+
+    skew = round(float(clean.skew()), 2)
+    kurt = round(float(clean.kurt()), 2)
+
+    fig = go.Figure(data=[
+        go.Bar(
+            x=centers,
+            y=counts,
+            marker_color="#636EFA",
+            name=x_label,
+        )
+    ])
+    fig.update_layout(
+        title=title,
+        xaxis_title=x_label,
+        yaxis_title="Count",
+        annotations=[dict(
+            x=0.98, y=0.97, xref="paper", yref="paper",
+            text=f"skew={skew}  kurt={kurt}",
+            showarrow=False, font=dict(size=11),
+            align="right"
+        )]
+    )
+    return fig.to_json()
+
+
 def generate_univariate_analysis(df, selected):
     plots = []
     skewed = set(selected.get("skewed_columns", []))
 
-    # Numerical → histogram (+ log-transform plot for skewed cols)
+    # Numerical → pre-computed histogram (always renders)
     for col in selected["numerical_columns"]:
-        fig = px.histogram(df, x=df[col].dropna(), title=f"Distribution of {col}")
-        plots.append(fig.to_json())
+        series = df[col]
+        plots.append(_make_histogram(series, f"Distribution of {col}", col))
 
+        # Log-transformed view for skewed columns
         if col in skewed:
-            log_vals = np.log1p(df[col].dropna().clip(lower=0))
-            fig_log = px.histogram(
-                x=log_vals,
-                title=f"Distribution of {col} (log-transformed)",
-                labels={"x": f"log1p({col})"}
-            )
-            plots.append(fig_log.to_json())
+            log_series = np.log1p(series.clip(lower=0))
+            plots.append(_make_histogram(log_series, f"Distribution of {col} (log-transformed)", f"log1p({col})"))
 
-    # Categorical → bar chart
+    # Categorical → bar chart (unchanged — already works)
     for col in selected["categorical_columns"]:
         counts = df[col].value_counts().reset_index()
         counts.columns = [col, "count"]
-
         fig = px.bar(counts, x=col, y="count", title=f"{col} Distribution")
         plots.append(fig.to_json())
 
@@ -169,10 +204,29 @@ def generate_univariate_analysis(df, selected):
 def generate_bivariate_analysis(df, selected):
     plots = []
 
-    # numerical vs numerical → scatter
-    for col1, col2 in selected["correlation_pairs"]:
-        fig = px.scatter(df, x=col1, y=col2,
-                         title=f"{col1} vs {col2}")
+    for col1, col2 in selected["correlation_pairs"][:3]:
+        # Filter weak correlations before plotting
+        corr_val = round(float(df[[col1, col2]].dropna().corr().iloc[0, 1]), 3)
+        if abs(corr_val) < 0.3:
+            continue
+
+        try:
+            fig = px.scatter(
+                df, x=col1, y=col2,
+                trendline="ols",
+                title=f"{col1} vs {col2}"
+            )
+        except Exception:
+            fig = px.scatter(df, x=col1, y=col2, title=f"{col1} vs {col2}")
+
+        direction = "positive" if corr_val > 0 else "negative"
+        fig.update_layout(
+            annotations=[dict(
+                x=0.5, y=1.07, xref="paper", yref="paper",
+                text=f"r = {corr_val:+.3f}  ({direction} correlation)",
+                showarrow=False, font=dict(size=13)
+            )]
+        )
         plots.append(fig.to_json())
 
     return plots
@@ -199,7 +253,7 @@ def generate_target_analysis(df, selected):
     problem_type = selected["problem_type"]
 
     if not target:
-        return None
+        return []
 
     plots = []
 
@@ -224,20 +278,31 @@ def generate_target_analysis(df, selected):
         corr_series = corr_series.sort_values(ascending=False)
 
         top_features = list(corr_series.index[:3])
-        print("Top features:", top_features)
 
         for col in top_features:
-
-            # 🔥 Safety check
             if col not in df.columns:
                 continue
 
             corr_value = round(df[col].corr(df[target]), 3)
 
-            fig = px.scatter(df, x=col, y=target, trendline="ols", title=f"{col} vs {target} (corr={corr_value})")
+            try:
+                fig = px.scatter(
+                    df, x=col, y=target,
+                    trendline="ols",
+                    title=f"{col} vs {target} (r = {corr_value})"
+                )
+            except Exception:
+                # statsmodels not installed — fall back to plain scatter
+                fig = px.scatter(
+                    df, x=col, y=target,
+                    title=f"{col} vs {target} (r = {corr_value})"
+                )
 
             fig.add_annotation(
-                text=f"Correlation: {corr_value}", xref="paper", yref="paper", x=0.05, y=0.95, showarrow=False
+                text=f"r = {corr_value}",
+                xref="paper", yref="paper",
+                x=0.05, y=0.95, showarrow=False,
+                font=dict(size=13)
             )
 
             plots.append(fig.to_json())

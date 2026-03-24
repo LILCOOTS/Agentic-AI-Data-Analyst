@@ -36,14 +36,34 @@ def detect_high_missing(metadata, threshold_high=0.5, threshold_med=0.2):
     }
 
 def detect_id_columns(metadata):
+    """
+    A column is ID-like only if:
+      1. Every value is unique (unique == num_rows), AND
+      2. It is an integer column  OR  its name contains id-like keywords.
+    Float/continuous columns (Temperature, Pressure, etc.) are NEVER IDs
+    even if every value happens to be unique.
+    """
     id_like = []
-
-    num_rows = metadata["num_rows"]
+    num_rows   = metadata["num_rows"]
     unique_counts = metadata["unique_counts"]
+    numerical  = set(metadata["column_types"]["numerical"])
+
+    ID_KEYWORDS = {"id", "index", "key", "code", "no", "num", "number", "seq", "uuid", "ref"}
 
     for col, unique in unique_counts.items():
-        if unique == num_rows:
-            id_like.append(col)
+        if unique != num_rows:
+            continue
+
+        name_lower = col.lower().replace(" ", "_").replace("-", "_")
+        name_is_id = any(kw in name_lower.split("_") or name_lower.startswith(kw) for kw in ID_KEYWORDS)
+
+        # Float numerical columns are measurement data, never IDs
+        is_float_numerical = col in numerical and not name_is_id
+
+        if is_float_numerical:
+            continue  # Temperature (°C), Pressure (kPa) etc. — skip
+
+        id_like.append(col)
 
     return id_like
 
@@ -59,13 +79,13 @@ def detect_high_skew(metadata, skew_threshold=2):
     return skewed
 
 def detect_low_variance(metadata):
+    """Flag only truly constant columns (unique == 1). Low ratio ≠ useless."""
     low_variance = []
 
     unique_counts = metadata["unique_counts"]
-    num_rows = metadata["num_rows"]
 
     for col, unique in unique_counts.items():
-        if unique <= 1 or (unique / num_rows) < 0.01:
+        if unique == 1:          # constant column — zero predictive signal
             low_variance.append(col)
 
     return low_variance

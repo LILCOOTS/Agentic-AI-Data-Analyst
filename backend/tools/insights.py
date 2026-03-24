@@ -8,16 +8,19 @@ from tools.llm_insights import get_llm_insights
 def generate_recommendations(metadata, data_quality, selected_columns):
     recommendations = []
 
+    # Keys live under missing_report (nested), not at the top level
+    missing_report = data_quality.get("missing_report", {})
+
     # High missing → name the columns
-    for col in data_quality["missing_report"]["high_missing_columns"]:
-        pct = metadata["missing_summary"]["per_column"][col]["missing_percentage"]
+    for col in missing_report.get("high_missing_columns", []):
+        pct = metadata["missing_summary"]["per_column"].get(col, {}).get("missing_percentage", 0)
         recommendations.append(
             f"Drop '{col}' — {pct:.1f}% of values are missing, making it unreliable for modelling."
         )
 
     # Moderate missing → imputation suggestion
-    for col in data_quality["missing_report"]["moderate_missing_columns"]:
-        pct = metadata["missing_summary"]["per_column"][col]["missing_percentage"]
+    for col in missing_report.get("moderate_missing_columns", []):
+        pct = metadata["missing_summary"]["per_column"].get(col, {}).get("missing_percentage", 0)
         recommendations.append(
             f"Impute '{col}' ({pct:.1f}% missing) using median or model-based imputation."
         )
@@ -46,10 +49,10 @@ def generate_recommendations(metadata, data_quality, selected_columns):
             f"which can cause overfitting with naive encoding."
         )
 
-    # Low variance
+    # Constant columns only (unique == 1)
     for col in data_quality.get("low_variance_columns", []):
         recommendations.append(
-            f"Consider dropping '{col}' — it has near-zero variance and adds minimal predictive signal."
+            f"Drop '{col}' — it is a constant column (single unique value) with zero predictive signal."
         )
 
     # Target present → positive cue
@@ -154,8 +157,10 @@ def generate_correlation_insights(correlation_pairs, df):
             continue
 
         if abs(corr) > 0.7:
-            strength = "strong"
+            strength = "very strong"
         elif abs(corr) > 0.4:
+            strength = "strong"
+        elif abs(corr) > 0.2:
             strength = "moderate"
         else:
             strength = "weak"
@@ -195,13 +200,13 @@ def generate_key_findings(df, target, numerical_cols):
     for col, corr in sorted_corr[:3]:
         abs_corr = abs(corr)
         if abs_corr >= 0.7:
-            label = "strongly correlated"
+            label = "very strongly correlated"
         elif abs_corr >= 0.4:
-            label = "moderately correlated"
+            label = "strongly correlated"
         elif abs_corr >= 0.2:
-            label = "weakly correlated"
+            label = "moderately correlated"
         else:
-            label = "minimally correlated"
+            label = "weakly correlated"
 
         direction = "positively" if corr > 0 else "negatively"
 
@@ -260,12 +265,20 @@ def generate_target_insights(df, target_column, numerical_cols, categorical_cols
     sorted_corr = sorted(correlations.items(), key=lambda x: abs(x[1]), reverse=True)
 
     for col, corr in sorted_corr[:5]:
-        if abs(corr) < 0.3:
+        if abs(corr) < 0.2:
             continue
         direction = "positively" if corr > 0 else "negatively"
+        if abs(corr) >= 0.7:
+            signal = "very strong"
+        elif abs(corr) >= 0.4:
+            signal = "strong"
+        elif abs(corr) >= 0.2:
+            signal = "moderate"
+        else:
+            signal = "weak"
         insights.append(
             f"'{col}' is {direction} related to '{target_column}' "
-            f"(r = {corr:.2f}) — {'strong' if abs(corr) >= 0.5 else 'moderate'} signal."
+            f"(r = {corr:.2f}) — {signal} signal."
         )
         if len(insights) == 5:
             break
@@ -316,7 +329,8 @@ def generate_all_insights(df, metadata, data_quality, selected_columns):
         selected_columns["target_column"],
         selected_columns["numerical_columns"]
     )
-    recommendations = generate_recommendations(metadata, data_quality, selected_columns)
+    # Top 5 most impactful recommendations only
+    recommendations = generate_recommendations(metadata, data_quality, selected_columns)[:5]
 
     # ── Risk flags ────────────────────────────────────────────────────────
     risk_flags = []
