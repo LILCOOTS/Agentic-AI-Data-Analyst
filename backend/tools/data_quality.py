@@ -17,7 +17,7 @@ analyze_data_quality(metadata)
 #         self.metadata  = metadata
 #         self.issues = []
 
-def detect_high_missing(metadata, threshold_high=0.5, threshold_med=0.2):
+def detect_high_missing(metadata, threshold_high=0.5, threshold_med=0.01):
     high_missing = []
     moderate_missing = []
 

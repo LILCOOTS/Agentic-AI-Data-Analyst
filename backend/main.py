@@ -6,6 +6,8 @@ from core.session_manager import SessionManager
 from tools.profiling import extract_metadata
 from tools.data_quality import analyze_data_quality
 from tools.eda import run_full_analysis
+from tools.data_cleaning import generate_cleaning_action_report
+from tools.apply_cleaning import apply_cleaning
 
 app = FastAPI()
 
@@ -109,3 +111,38 @@ async def get_full_analysis(request: Request, session_id: str, refresh: bool = F
 
     session.analysis_cache = results
     return results
+
+@app.post("/cleaning")
+async def cleaning(request: Request, session_id: str):
+    manager = request.app.state.session_manager
+    session = manager.get_session(session_id)
+
+    if session.working_dataset is None:
+        raise HTTPException(
+            status_code=400,
+            detail="No dataset uploaded for this session. Call /upload_dataset first."
+        )
+
+    try:
+        actions = generate_cleaning_action_report(session.metadata, session.data_quality)
+        cleaned_df, cleaning_log = apply_cleaning(session.raw_dataset, actions)
+
+        session.working_dataset = cleaned_df
+        session.metadata = extract_metadata(cleaned_df)
+        session.data_quality = analyze_data_quality(session.metadata)
+        session.analysis_cache = None  # bust cache — data changed
+
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Cleaning failed: {str(e)}")
+
+    return {
+        "session_id": session.session_id,
+        "rows_before": int(session.raw_dataset.shape[0]),
+        "rows_after": int(cleaned_df.shape[0]),
+        "columns_before": int(session.raw_dataset.shape[1]),
+        "columns_after": int(cleaned_df.shape[1]),
+        "cleaning_log": cleaning_log,
+        "actions_applied": len([l for l in cleaning_log if l["status"] not in ("skipped — already removed",)]),
+        "metadata": session.metadata,
+        "data_quality": session.data_quality
+    }
