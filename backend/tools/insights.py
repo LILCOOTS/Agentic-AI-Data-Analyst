@@ -222,7 +222,7 @@ def generate_key_findings(df, target, numerical_cols):
 # FEATURE IMPORTANCE — sorted ranking vs target
 # ─────────────────────────────────────────────────────────────────────────────
 
-def generate_feature_importance(df, target, numerical_cols):
+def generate_correlation_ranking(df, target, numerical_cols):
     if not target or target not in df.columns:
         return []
 
@@ -324,7 +324,7 @@ def generate_all_insights(df, metadata, data_quality, selected_columns):
         selected_columns["numerical_columns"],
         selected_columns["categorical_columns"]
     )
-    feature_importance = generate_feature_importance(
+    correlation_ranking = generate_correlation_ranking(
         df,
         selected_columns["target_column"],
         selected_columns["numerical_columns"]
@@ -352,7 +352,7 @@ def generate_all_insights(df, metadata, data_quality, selected_columns):
     return {
         "general":            general,
         "key_findings":       key_findings,
-        "feature_importance": feature_importance,
+        "correlation_ranking": correlation_ranking,
         "correlation":        correlation,
         "target_analysis":    target_insights,
         "risk_flags":         risk_flags,

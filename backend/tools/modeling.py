@@ -43,6 +43,12 @@ def run_modeling(df: pd.DataFrame, target_col: str, problem_type: str) -> dict:
     if len(X) < 10:
         raise ValueError("Not enough valid rows to train a model after cleaning.")
 
+    # ── Target scaling for regression (if skewed) ──────────────────────────
+    is_log_transformed = False
+    if problem_type == "regression" and abs(y.skew()) > 0.5 and y.min() >= 0:
+        y = np.log1p(y)
+        is_log_transformed = True
+
     # ── Train / test split ────────────────────────────────────────────────
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.2, random_state=42
@@ -68,8 +74,16 @@ def run_modeling(df: pd.DataFrame, target_col: str, problem_type: str) -> dict:
         metric_value = round(float(accuracy_score(y_test, y_pred)), 4)
         extra        = {"f1_score": round(float(f1_score(y_test, y_pred, average="weighted", zero_division=0)), 4)}
     else:
-        rmse         = float(np.sqrt(mean_squared_error(y_test, y_pred)))
-        r2           = float(r2_score(y_test, y_pred))
+        if is_log_transformed:
+            # Inverse transform to report original scale RMSE
+            y_test_orig = np.expm1(y_test)
+            y_pred_orig = np.expm1(y_pred)
+        else:
+            y_test_orig = y_test
+            y_pred_orig = y_pred
+
+        rmse         = float(np.sqrt(mean_squared_error(y_test_orig, y_pred_orig)))
+        r2           = float(r2_score(y_test_orig, y_pred_orig))
         metric_name  = "rmse"
         metric_value = round(rmse, 4)
         extra        = {"r2_score": round(r2, 4)}

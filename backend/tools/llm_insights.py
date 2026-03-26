@@ -12,20 +12,42 @@ grok_api_key = os.getenv("GROQ_API_KEY")
 llm = ChatGroq(api_key=grok_api_key, model_name="openai/gpt-oss-120b")
 output_parser = StrOutputParser()
 
+def build_compact_context(metadata, data_quality, selected):
+    compact = {
+        "dataset_shape": f"{metadata.get('num_rows', 0)} rows, {metadata.get('num_columns', 0)} cols",
+        "target": selected.get("target_column"),
+        "problem_type": selected.get("problem_type"),
+        "selected_features": selected.get("numerical_columns", []) + selected.get("categorical_columns", []),
+        "key_issues": {
+            "high_missing": data_quality.get("missing_report", {}).get("high_missing_columns", []),
+            "skewed": data_quality.get("high_skew_columns", []),
+            "correlation_pairs": selected.get("correlation_pairs", [])
+        }
+    }
+    
+    stats = {}
+    num_summary = metadata.get("numerical_summary", {})
+    cat_summary = metadata.get("categorical_summary", {})
+    
+    for col in compact["selected_features"] + ([compact["target"]] if compact["target"] else []):
+        if col in num_summary:
+            s = num_summary[col]
+            stats[col] = f"num(mean={round(s.get('mean',0),1)}, std={round(s.get('std',0),1)}, skew={round(s.get('skewness',0),1)})"
+        elif col in cat_summary:
+            stats[col] = f"cat(unique={cat_summary[col].get('unique_count')})"
+            
+    compact["feature_stats"] = stats
+    return json.dumps(compact)
+
+
 def get_llm_insights(metadata, data_quality, selected):
     system_prompt = """
         You are a senior data analyst.
-        You will be given metadata, data quality report, and selected columns for analysis.
+        You will be given a compact summary of a dataset.
         Your task is to provide a comprehensive analysis of the dataset.
         
-        Metadata:
-        {metadata}
-
-        Data Quality:
-        {data_quality}
-
-        Selected Columns:
-        {selected}
+        Compact Context:
+        {compact_context}
 
         Provide:
             1. Key insights
@@ -43,10 +65,9 @@ def get_llm_insights(metadata, data_quality, selected):
 
     chain = prompt | llm | output_parser
     return chain.invoke({
-        "metadata": metadata,
-        "data_quality": data_quality,
-        "selected": selected
+        "compact_context": build_compact_context(metadata, data_quality, selected)
     })
+
 
 
 def get_llm_target_selection(candidates: list, metadata: dict) -> dict:

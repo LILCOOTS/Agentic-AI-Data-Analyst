@@ -323,9 +323,9 @@ def generate_target_analysis(df, selected):
 
     return plots 
 
-def run_full_analysis(df, metadata, data_quality):
+def run_full_analysis(df, metadata, data_quality, forced_target: str = None):
     # Step 1: Select columns
-    selected = select_columns(df, metadata, data_quality)
+    selected = select_columns(df, metadata, data_quality, forced_target=forced_target)
 
     # Step 2: Generate plots
     univariate = generate_univariate_analysis(df, selected)

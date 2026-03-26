@@ -24,7 +24,7 @@ def _is_zero_inflated(col, metadata):
     return median == 0 and (mean / max_v) < 0.15
 
 
-def generate_cleaning_action_report(metadata, data_quality):
+def generate_cleaning_action_report(metadata, data_quality, target_col=None):
     actions = []
     numerical_cols  = set(metadata["column_types"]["numerical"])
     categorical_cols = set(metadata["column_types"]["categorical"])
@@ -92,7 +92,7 @@ def generate_cleaning_action_report(metadata, data_quality):
 
     # ── 6. Handle skewed numerical columns ────────────────────────────────
     for col in data_quality["high_skew_columns"]:
-        if col in dropped:
+        if col in dropped or col == target_col:
             continue
 
         col_min = metadata["numerical_summary"].get(col, {}).get("min", 0)

@@ -55,8 +55,7 @@ def apply_cleaning(df: pd.DataFrame, actions: list) -> tuple[pd.DataFrame, list]
             elif action == "add_binary_indicator":
                 indicator_col = f"{col}_present"
                 dfc[indicator_col] = (dfc[col] > 0).astype(int)
-                dfc = dfc.drop(columns=[col])
-                log.append({"column": col, "action": action, "status": f"created '{indicator_col}' (0/1), dropped original"})
+                log.append({"column": col, "action": action, "status": f"created '{indicator_col}' (0/1), kept original"})
 
             elif action == "transform":
                 method = item.get("method", "log1p")

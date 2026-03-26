@@ -45,10 +45,10 @@ if st.button("Run Analysis") and session_id:
         for f in insights.get("key_findings", []):
             st.write("•", f)
 
-    # ── Feature Importance ───────────────────────────────────────────────
+    # ── Correlation Ranking ───────────────────────────────────────────────
     with col2:
-        st.subheader("📊 Feature Importance")
-        for item in insights.get("feature_importance", []):
+        st.subheader("📊 Correlation Ranking")
+        for item in insights.get("correlation_ranking", []):
             corr = item["correlation"]
             bar = "█" * int(abs(corr) * 20)
             sign = "+" if corr > 0 else "-"

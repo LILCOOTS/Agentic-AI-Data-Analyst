@@ -87,7 +87,7 @@ async def upload_dataset(
 
 
 @app.get("/get_full_analysis")
-async def get_full_analysis(request: Request, session_id: str, refresh: bool = False):
+async def get_full_analysis(request: Request, session_id: str, refresh: bool = False, target_col: str = None):
     manager = request.app.state.session_manager
     session = manager.get_session(session_id)
 
@@ -105,7 +105,8 @@ async def get_full_analysis(request: Request, session_id: str, refresh: bool = F
         results = run_full_analysis(
             session.working_dataset,
             session.metadata,
-            session.data_quality
+            session.data_quality,
+            forced_target=target_col
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Analysis failed: {str(e)}")
@@ -114,7 +115,7 @@ async def get_full_analysis(request: Request, session_id: str, refresh: bool = F
     return results
 
 @app.post("/cleaning")
-async def cleaning(request: Request, session_id: str):
+async def cleaning(request: Request, session_id: str, target_col: str = None):
     manager = request.app.state.session_manager
     session = manager.get_session(session_id)
 
@@ -124,8 +125,11 @@ async def cleaning(request: Request, session_id: str):
             detail="No dataset uploaded for this session. Call /upload_dataset first."
         )
 
+    if not target_col and session.analysis_cache and "selected_columns" in session.analysis_cache:
+        target_col = session.analysis_cache["selected_columns"].get("target_column")
+
     try:
-        actions = generate_cleaning_action_report(session.metadata, session.data_quality)
+        actions = generate_cleaning_action_report(session.metadata, session.data_quality, target_col=target_col)
         cleaned_df, cleaning_log = apply_cleaning(session.raw_dataset, actions)
 
         session.working_dataset = cleaned_df
