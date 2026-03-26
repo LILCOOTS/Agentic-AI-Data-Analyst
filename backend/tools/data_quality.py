@@ -69,10 +69,13 @@ def detect_id_columns(metadata):
 
 def detect_high_skew(metadata, skew_threshold=2):
     skewed = []
-
+    unique_counts   = metadata["unique_counts"]
     numerical_summary = metadata["numerical_summary"]
 
     for col, stats in numerical_summary.items():
+        # Skip binary columns — skewness is meaningless for 0/1 flags
+        if unique_counts.get(col, 99) == 2 and stats.get("min", -1) == 0 and stats.get("max", -1) == 1:
+            continue
         if abs(stats["skewness"]) > skew_threshold:
             skewed.append(col)
 
@@ -102,22 +105,64 @@ def detect_high_cardinality(metadata, threshold=50):
     return high_card
 
 def detect_candidate_targets(metadata):
-    candidates = []
-
+    """
+    Smart-filter target candidates to 3-5 meaningful columns.
+    Regression: continuous numerical, high unique ratio, not ID/year/binary/zero-inflated.
+    Classification: categorical with 2-10 balanced classes.
+    """
+    num_rows      = metadata["num_rows"]
     unique_counts = metadata["unique_counts"]
-    numerical_cols = metadata["column_types"]["numerical"]
+    numerical_cols = set(metadata["column_types"]["numerical"])
+    categorical_cols = set(metadata["column_types"]["categorical"])
+    num_summary   = metadata.get("numerical_summary", {})
+    cat_summary   = metadata.get("categorical_summary", {})
 
-    for col, unique in unique_counts.items():
+    scored = []  # (col, score, problem_type)
 
-        # classification candidate
-        if 2 <= unique <= 10:
-            candidates.append(col)
+    # ── Regression candidates ─────────────────────────────────────────────
+    for col in numerical_cols:
+        unique = unique_counts.get(col, 0)
+        stats  = num_summary.get(col, {})
 
-        # regression candidate
-        if col in numerical_cols and unique > 50:
-            candidates.append(col)
+        # Must have meaningful variety (>5% of rows are unique)
+        if unique < num_rows * 0.05:
+            continue
 
-    return list(set(candidates))
+        # Skip zero-inflated columns (median == 0, mostly zeros)
+        if stats.get("median", 1) == 0 and stats.get("mean", 1) / max(stats.get("max", 1), 1) < 0.15:
+            continue
+
+        # Skip year-like columns (min > 1800 and max < 2100 and all integers)
+        if stats.get("min", 0) > 1800 and stats.get("max", 9999) < 2100:
+            continue
+
+        # Score: unique ratio × std (rewards continuous, spread-out columns)
+        unique_ratio = unique / num_rows
+        std = stats.get("std", 0)
+        score = unique_ratio * std
+
+        scored.append((col, score, "regression"))
+
+    # ── Classification candidates ─────────────────────────────────────────
+    for col in categorical_cols:
+        unique = unique_counts.get(col, 0)
+        if unique < 2 or unique > 10:
+            continue
+
+        # Check class balance: majority class should be < 90% of rows
+        top_values = cat_summary.get(col, {}).get("top_values", {})
+        if top_values:
+            max_class_count = max(top_values.values())
+            if max_class_count / num_rows > 0.90:
+                continue  # too imbalanced — not a useful target
+
+        # Score: closer to balanced = higher score
+        balance_score = unique / 10  # more classes = more interesting
+        scored.append((col, balance_score, "classification"))
+
+    # ── Sort by score, return top 5 ───────────────────────────────────────
+    scored.sort(key=lambda x: x[1], reverse=True)
+    return [col for col, _, _ in scored[:5]]
 
 def analyze_data_quality(metadata: dict) -> dict:
     missing_report = detect_high_missing(metadata)

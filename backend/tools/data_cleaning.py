@@ -115,36 +115,4 @@ def generate_cleaning_action_report(metadata, data_quality):
                 "reason": f"High skewness ({skew_val}) — log1p compression"
             })
 
-    # ── 7. Log-transform regression target if skewed ──────────────────────
-    # Target skewness > 0.5 warrants normalisation regardless of the global threshold
-    target_candidates = []
-    for col in numerical_cols:
-        if col not in dropped:
-            stats = metadata["numerical_summary"].get(col, {})
-            if abs(stats.get("skewness", 0)) > 0.5 and col not in [
-                a["column"] for a in actions if a.get("action") == "transform"
-            ]:
-                # Only add if this col is a candidate target with high unique count
-                if metadata["unique_counts"].get(col, 0) > 50:
-                    target_candidates.append(col)
-
-    # Among candidates, pick the one selected as target (if any)
-    selected_target = None
-    for col in ["SalePrice", "Price", "Target", "target", "label", "Label"]:
-        if col in target_candidates:
-            selected_target = col
-            break
-    # Fallback: highest unique-count numerical not already transformed
-    if not selected_target and target_candidates:
-        selected_target = max(target_candidates, key=lambda c: metadata["unique_counts"].get(c, 0))
-
-    if selected_target:
-        skew_val = round(metadata["numerical_summary"][selected_target]["skewness"], 2)
-        actions.append({
-            "column": selected_target,
-            "action": "transform",
-            "method": "log1p",
-            "reason": f"Target variable skewed ({skew_val}) — log1p normalisation improves regression"
-        })
-
     return actions

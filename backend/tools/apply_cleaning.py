@@ -47,6 +47,17 @@ def apply_cleaning(df: pd.DataFrame, actions: list) -> tuple[pd.DataFrame, list]
                 removed = before - len(dfc)
                 log.append({"column": None, "action": action, "status": f"removed {removed} duplicate rows"})
 
+            elif action == "fill_with_none":
+                n = dfc[col].isna().sum()
+                dfc[col] = dfc[col].fillna("None")
+                log.append({"column": col, "action": action, "status": f"filled {n} NaNs with 'None'"})
+
+            elif action == "add_binary_indicator":
+                indicator_col = f"{col}_present"
+                dfc[indicator_col] = (dfc[col] > 0).astype(int)
+                dfc = dfc.drop(columns=[col])
+                log.append({"column": col, "action": action, "status": f"created '{indicator_col}' (0/1), dropped original"})
+
             elif action == "transform":
                 method = item.get("method", "log1p")
                 if method == "log1p":
@@ -54,7 +65,7 @@ def apply_cleaning(df: pd.DataFrame, actions: list) -> tuple[pd.DataFrame, list]
                         log.append({"column": col, "action": action, "status": "skipped — negative values"})
                         continue
                     dfc[col] = np.log1p(dfc[col])
-                    log.append({"column": col, "action": action, "status": f"log1p applied"})
+                    log.append({"column": col, "action": action, "status": "log1p applied"})
                 else:
                     log.append({"column": col, "action": action, "status": f"unknown method '{method}' — skipped"})
 

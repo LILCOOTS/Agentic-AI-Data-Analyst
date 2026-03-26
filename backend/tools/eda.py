@@ -14,9 +14,9 @@ import numpy as np
 import plotly.express as px
 import pandas as pd
 from tools.insights import generate_all_insights
-from tools.llm_insights import get_llm_insights
+from tools.llm_insights import get_llm_insights, get_llm_target_selection
 
-def select_columns(df, metadata, data_quality, top_k=5):
+def select_columns(df, metadata, data_quality, top_k=5, forced_target: str = None):
     numerical_cols = metadata["column_types"]["numerical"]
     categorical_cols = metadata["column_types"]["categorical"]
 
@@ -75,20 +75,27 @@ def select_columns(df, metadata, data_quality, top_k=5):
         if col in categorical_cols
     ]
 
-    # Prefer numerical target (regression)
-    if numerical_candidates:
-        # pick highest variance numerical target
+    # ── Phase 3: User override ────────────────────────────────────────────
+    if forced_target and forced_target in metadata["columns"]:
+        target_column = forced_target
+        problem_type  = "regression" if forced_target in numerical_cols else "classification"
+
+    # ── Phase 2: LLM target selection ────────────────────────────────────
+    elif candidate_targets:
+        llm_result    = get_llm_target_selection(candidate_targets, metadata)
+        target_column = llm_result.get("target_column")
+        problem_type  = llm_result.get("problem_type", "regression")
+
+    # ── Fallback: max(std) if candidates empty ────────────────────────────
+    elif numerical_candidates:
         target_column = max(
             numerical_candidates,
             key=lambda col: metadata["numerical_summary"].get(col, {}).get("std", 0)
         )
         problem_type = "regression"
-
-    # Else fallback to categorical (classification)
     elif categorical_candidates:
-        # pick most balanced categorical target (simple heuristic)
         target_column = categorical_candidates[0]
-        problem_type = "classification"
+        problem_type  = "classification"
 
     if target_column:
         if target_column in top_numerical:

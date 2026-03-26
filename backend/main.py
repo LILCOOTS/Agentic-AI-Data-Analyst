@@ -8,6 +8,7 @@ from tools.data_quality import analyze_data_quality
 from tools.eda import run_full_analysis
 from tools.data_cleaning import generate_cleaning_action_report
 from tools.apply_cleaning import apply_cleaning
+from tools.modeling import run_modeling
 
 app = FastAPI()
 
@@ -145,4 +146,40 @@ async def cleaning(request: Request, session_id: str):
         "actions_applied": len([l for l in cleaning_log if l["status"] not in ("skipped — already removed",)]),
         "metadata": session.metadata,
         "data_quality": session.data_quality
+    }
+
+@app.post("/modeling")
+def modeling(request: Request, session_id: str):
+    manager = request.app.state.session_manager
+    session = manager.get_session(session_id)
+
+    if session.working_dataset is None:
+        raise HTTPException(status_code=400, detail="No dataset uploaded. Call /upload_dataset first.")
+
+    if not session.analysis_cache or "selected_columns" not in session.analysis_cache:
+        raise HTTPException(status_code=400, detail="No analysis found. Call /get_full_analysis first.")
+
+    selected   = session.analysis_cache["selected_columns"]
+    target_col = selected.get("target_column")
+    prob_type  = selected.get("problem_type")
+
+    if not target_col:
+        raise HTTPException(status_code=400, detail="No target column detected. Check /get_full_analysis output.")
+
+    try:
+        results = run_modeling(session.working_dataset, target_col, prob_type)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Modeling failed: {str(e)}")
+
+    return {
+        "session_id":       session.session_id,
+        "problem_type":     results["problem_type"],
+        "target_column":    target_col,
+        "metric_name":      results["metric_name"],
+        "metric_value":     results["metric_value"],
+        "extra_metrics":    results["extra_metrics"],
+        "rows_trained":     results["rows_trained"],
+        "rows_tested":      results["rows_tested"],
+        "n_features":       results["n_features"],
+        "feature_importance": results["feature_importance"],  # list of dicts, JSON-safe
     }
