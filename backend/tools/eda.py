@@ -109,10 +109,10 @@ def select_columns(df, metadata, data_quality, top_k=5, forced_target: str = Non
     if len(top_numerical) >= 2:
         corr_cols = top_numerical.copy()
 
-        if target_column and target_column not in corr_cols:
+        if target_column and target_column not in corr_cols and target_column in metadata["column_types"]["numerical"]:
             corr_cols.append(target_column)
             
-        corr = df[corr_cols].corr().abs()
+        corr = df[corr_cols].corr(numeric_only=True).abs()
 
         pairs = []
 
@@ -213,7 +213,7 @@ def generate_bivariate_analysis(df, selected):
 
     for col1, col2 in selected["correlation_pairs"][:3]:
         # Filter weak correlations before plotting
-        corr_val = round(float(df[[col1, col2]].dropna().corr().iloc[0, 1]), 3)
+        corr_val = round(float(df[[col1, col2]].dropna().corr(numeric_only=True).iloc[0, 1]), 3)
         if abs(corr_val) < 0.3:
             continue
 
@@ -245,7 +245,7 @@ def generate_correlation(df, selected):
     if len(num_cols) < 2:
         return None
 
-    corr = df[num_cols].corr()
+    corr = df[num_cols].corr(numeric_only=True)
 
     fig = px.imshow(
         corr,
@@ -279,7 +279,10 @@ def generate_target_analysis(df, selected):
         if target not in temp_df.columns:
             return []
 
-        corr_series = temp_df.corr()[target].drop(target)
+        if not pd.api.types.is_numeric_dtype(temp_df[target]):
+            return []  # Regression requires a numeric target
+
+        corr_series = temp_df.corr(numeric_only=True)[target].drop(target)
 
         # 🔥 Ensure index is valid column names
         corr_series = corr_series.sort_values(ascending=False)
@@ -338,11 +341,11 @@ def run_full_analysis(df, metadata, data_quality, forced_target: str = None):
 
     return {
         "selected_columns": selected,
-        "eda": {
-            "univariate": univariate,
-            "bivariate": bivariate,
-            "correlation": correlation,
-            "target_analysis": target_analysis
-        },
+        # "eda": {
+        #     "univariate": univariate,
+        #     "bivariate": bivariate,
+        #     "correlation": correlation,
+        #     "target_analysis": target_analysis
+        # },
         "insights": insights
     }

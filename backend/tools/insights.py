@@ -1,6 +1,5 @@
 from tools.llm_insights import get_llm_insights
-
-
+import pandas as pd
 # ─────────────────────────────────────────────────────────────────────────────
 # RECOMMENDATIONS — column-specific, not generic
 # ─────────────────────────────────────────────────────────────────────────────
@@ -183,6 +182,9 @@ def generate_key_findings(df, target, numerical_cols):
     if not target or target not in df.columns:
         return []
 
+    if not pd.api.types.is_numeric_dtype(df[target]):
+        return []
+
     correlations = {}
 
     for col in numerical_cols:
@@ -226,6 +228,9 @@ def generate_correlation_ranking(df, target, numerical_cols):
     if not target or target not in df.columns:
         return []
 
+    if not pd.api.types.is_numeric_dtype(df[target]):
+        return []
+
     importance = []
 
     for col in numerical_cols:
@@ -253,14 +258,15 @@ def generate_target_insights(df, target_column, numerical_cols, categorical_cols
 
     # Numerical vs Target
     correlations = {}
-    for col in numerical_cols:
-        if col == target_column:
-            continue
-        temp_df = df[[col, target_column]].dropna()
-        if temp_df[col].nunique() <= 1:
-            continue
-        corr = temp_df.corr().iloc[0, 1]
-        correlations[col] = corr
+    if pd.api.types.is_numeric_dtype(df[target_column]):
+        for col in numerical_cols:
+            if col == target_column:
+                continue
+            temp_df = df[[col, target_column]].dropna()
+            if temp_df[col].nunique() <= 1:
+                continue
+            corr = temp_df.corr().iloc[0, 1]
+            correlations[col] = corr
 
     sorted_corr = sorted(correlations.items(), key=lambda x: abs(x[1]), reverse=True)
 

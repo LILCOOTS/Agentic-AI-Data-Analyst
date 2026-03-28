@@ -115,4 +115,15 @@ def generate_cleaning_action_report(metadata, data_quality, target_col=None):
                 "reason": f"High skewness ({skew_val}) — log1p compression"
             })
 
+    # ── 7. Handle high cardinality categorical columns ──────────────────────
+    for col in data_quality.get("high_cardinality_columns", []):
+        if col in dropped or col == target_col:
+            continue
+            
+        actions.append({
+            "column": col,
+            "action": "frequency_encode",
+            "reason": "High cardinality categorical — frequency encoding to prevent dimensionality explosion"
+        })
+
     return actions

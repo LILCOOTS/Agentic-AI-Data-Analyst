@@ -68,6 +68,11 @@ def apply_cleaning(df: pd.DataFrame, actions: list) -> tuple[pd.DataFrame, list]
                 else:
                     log.append({"column": col, "action": action, "status": f"unknown method '{method}' — skipped"})
 
+            elif action == "frequency_encode":
+                counts = dfc[col].value_counts(normalize=True)
+                dfc[col] = dfc[col].map(counts).fillna(0)
+                log.append({"column": col, "action": action, "status": "frequency encoded"})
+
             else:
                 log.append({"column": col, "action": action, "status": "unknown action — skipped"})
 

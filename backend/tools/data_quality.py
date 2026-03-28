@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import re
 
 """
 analyze_data_quality(metadata)
@@ -54,7 +55,9 @@ def detect_id_columns(metadata):
         if unique != num_rows:
             continue
 
-        name_lower = col.lower().replace(" ", "_").replace("-", "_")
+        # Convert CamelCase to snake_case first, then lower and replace spaces/dashes
+        name_snake = re.sub(r'(?<!^)(?=[A-Z])', '_', col)
+        name_lower = name_snake.lower().replace(" ", "_").replace("-", "_")
         name_is_id = any(kw in name_lower.split("_") or name_lower.startswith(kw) for kw in ID_KEYWORDS)
 
         # Float numerical columns are measurement data, never IDs
@@ -144,6 +147,7 @@ def detect_candidate_targets(metadata):
         scored.append((col, score, "regression"))
 
     # ── Classification candidates ─────────────────────────────────────────
+    # First, check categorical columns
     for col in categorical_cols:
         unique = unique_counts.get(col, 0)
         if unique < 2 or unique > 10:
@@ -160,9 +164,33 @@ def detect_candidate_targets(metadata):
         balance_score = unique / 10  # more classes = more interesting
         scored.append((col, balance_score, "classification"))
 
+    # Also check numerical columns for binary outcomes (like Exited = 0/1)
+    for col in numerical_cols:
+        unique = unique_counts.get(col, 0)
+        if unique == 2:
+            # Check balance:
+            stats = num_summary.get(col, {})
+            # If min=0 and max=1, mean represents the proportion of 1s
+            if stats.get("min", -1) == 0 and stats.get("max", -1) == 1:
+                prop = stats.get("mean", 0)
+                if prop < 0.05 or prop > 0.95:
+                    continue # highly imbalanced
+            # Score binary classification targets very favorably
+            scored.append((col, 1.0, "classification"))
+
+
     # ── Sort by score, return top 5 ───────────────────────────────────────
-    scored.sort(key=lambda x: x[1], reverse=True)
-    return [col for col, _, _ in scored[:5]]
+    final_scored = []
+    semantic_keywords = ["target", "label", "exited", "churn", "price", "status"]
+    
+    for col, score, ptype in scored:
+        name_lower = col.lower()
+        if any(kw in name_lower for kw in semantic_keywords):
+            score += 10.0  # Massive boost to force it to the top
+        final_scored.append((col, score, ptype))
+
+    final_scored.sort(key=lambda x: x[1], reverse=True)
+    return [col for col, _, _ in final_scored[:5]]
 
 def analyze_data_quality(metadata: dict) -> dict:
     missing_report = detect_high_missing(metadata)

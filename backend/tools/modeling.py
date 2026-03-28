@@ -1,11 +1,17 @@
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression, LinearRegression
+from sklearn.linear_model import LogisticRegression, LinearRegression, Ridge
+from sklearn.ensemble import (
+    RandomForestRegressor, RandomForestClassifier,
+    HistGradientBoostingRegressor, HistGradientBoostingClassifier,
+    StackingRegressor, StackingClassifier
+)
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import (
     accuracy_score, f1_score,
-    mean_squared_error, r2_score
+    mean_squared_error, r2_score,
+    roc_auc_score, average_precision_score
 )
 
 
@@ -61,9 +67,21 @@ def run_modeling(df: pd.DataFrame, target_col: str, problem_type: str) -> dict:
 
     # ── Model selection ───────────────────────────────────────────────────
     if problem_type == "classification":
-        model = LogisticRegression(max_iter=1000, solver="lbfgs")
+        base_models = [
+            ("rf", RandomForestClassifier(n_estimators=100, random_state=42)),
+            ("hgb", HistGradientBoostingClassifier(random_state=42)),
+            ("logreg", LogisticRegression(max_iter=1000, solver="lbfgs"))
+        ]
+        meta_model = LogisticRegression(max_iter=1000, solver="lbfgs")
+        model = StackingClassifier(estimators=base_models, final_estimator=meta_model, cv=5)
     else:
-        model = LinearRegression()
+        base_models = [
+            ("rf", RandomForestRegressor(n_estimators=100, random_state=42)),
+            ("hgb", HistGradientBoostingRegressor(random_state=42)),
+            ("ridge", Ridge())
+        ]
+        meta_model = Ridge()
+        model = StackingRegressor(estimators=base_models, final_estimator=meta_model, cv=5)
 
     model.fit(X_train_sc, y_train)
     y_pred = model.predict(X_test_sc)
@@ -72,7 +90,25 @@ def run_modeling(df: pd.DataFrame, target_col: str, problem_type: str) -> dict:
     if problem_type == "classification":
         metric_name  = "accuracy"
         metric_value = round(float(accuracy_score(y_test, y_pred)), 4)
-        extra        = {"f1_score": round(float(f1_score(y_test, y_pred, average="weighted", zero_division=0)), 4)}
+        
+        # Calculate robust performance metrics natively for classification
+        try:
+            y_prob = model.predict_proba(X_test)
+            # Handle multi-class vs binary
+            if len(np.unique(y_train)) == 2:
+                roc_auc = roc_auc_score(y_test, y_prob[:, 1])
+                pr_auc = average_precision_score(y_test, y_prob[:, 1])
+            else:
+                roc_auc = roc_auc_score(y_test, y_prob, multi_class="ovo")
+                pr_auc = 0.0 # PR-AUC natively harder for multi-class without binarization
+        except Exception:
+            roc_auc, pr_auc = 0.0, 0.0
+
+        extra = {
+            "f1_score": round(float(f1_score(y_test, y_pred, average="weighted", zero_division=0)), 4),
+            "roc_auc": round(float(roc_auc), 4),
+            "pr_auc": round(float(pr_auc), 4)
+        }
     else:
         if is_log_transformed:
             # Inverse transform to report original scale RMSE
@@ -89,13 +125,10 @@ def run_modeling(df: pd.DataFrame, target_col: str, problem_type: str) -> dict:
         extra        = {"r2_score": round(r2, 4)}
 
     # ── Feature importance ────────────────────────────────────────────────
-    # coef_ is 1D for LinearRegression and binary LogisticRegression,
-    # 2D (n_classes, n_features) for multiclass — flatten with mean across classes
-    coef = model.coef_
-    if coef.ndim == 2:
-        importance = np.abs(coef).mean(axis=0)   # multiclass: average across classes
-    else:
-        importance = np.abs(coef)                 # binary / regression
+    # We extract absolute feature importance directly from the Random Forest
+    # base estimator inside the trained stack, yielding powerful non-linear importance.
+    rf_estimator = model.named_estimators_["rf"]
+    importance = rf_estimator.feature_importances_
 
     feature_importance = (
         pd.DataFrame({"feature": X.columns, "importance": importance})
@@ -106,12 +139,14 @@ def run_modeling(df: pd.DataFrame, target_col: str, problem_type: str) -> dict:
 
     return {
         "problem_type": problem_type,
+        "model_architecture": "StackingEnsemble (RandomForest + HistGradientBoosting + Linear)",
         "metric_name":  metric_name,
         "metric_value": metric_value,
         "extra_metrics": extra,
         "rows_trained":  int(len(X_train)),
         "rows_tested":   int(len(X_test)),
         "n_features":    int(X.shape[1]),
+        "feature_importance_source": "RandomForest (Level 0 Base Estimator)",
         # Plain list of dicts — JSON-serializable, no DataFrame
         "feature_importance": feature_importance.to_dict(orient="records"),
     }
