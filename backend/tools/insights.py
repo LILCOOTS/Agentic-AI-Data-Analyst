@@ -129,7 +129,7 @@ def generate_general_insights(metadata, data_quality, selected_columns=None):
 
     # ── Target ─────────────────────────────────────────────────────────────
     if target:
-        insights["target"] = f"'{target}' is the regression target (selected from candidate targets)."
+        insights["target"] = f"'{target}' is the {problem} target (selected from candidate targets)."
     elif data_quality["candidate_targets"]:
         t = data_quality["candidate_targets"][0]
         insights["target"] = f"'{t}' is a candidate target variable."
@@ -152,18 +152,18 @@ def generate_correlation_insights(correlation_pairs, df):
 
         corr = temp_df.corr().iloc[0, 1]
 
-        if abs(corr) < 0.3:
+        if abs(corr) < 0.2:
             continue
 
-        if abs(corr) > 0.7:
+        if abs(corr) >= 0.7:
             strength = "very strong"
-        elif abs(corr) > 0.4:
+        elif abs(corr) >= 0.4:
             strength = "strong"
-        elif abs(corr) > 0.2:
+        elif abs(corr) >= 0.2:
             strength = "moderate"
         else:
             strength = "weak"
-
+        
         direction = "positive" if corr > 0 else "negative"
 
         insights.append(

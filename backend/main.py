@@ -177,13 +177,19 @@ def modeling(request: Request, session_id: str):
 
     return {
         "session_id":       session.session_id,
-        "problem_type":     results["problem_type"],
+        "problem_type":     results.get("problem_type"),
         "target_column":    target_col,
-        "metric_name":      results["metric_name"],
-        "metric_value":     results["metric_value"],
-        "extra_metrics":    results["extra_metrics"],
-        "rows_trained":     results["rows_trained"],
-        "rows_tested":      results["rows_tested"],
-        "n_features":       results["n_features"],
-        "feature_importance": results["feature_importance"],  # list of dicts, JSON-safe
+        "model_architecture": results.get("model_architecture"),
+        "best_model":       results.get("best_model"),
+        "metric_name":      results.get("metric_name"),
+        "metric_value":     results.get("metric_value"),
+        "cv_score_mean":    results.get("cv_score_mean"),
+        "cv_score_std":     results.get("cv_score_std"),
+        "extra_metrics":    results.get("extra_metrics"),
+        "models_performance": results.get("models_performance"),
+        "rows_trained":     results.get("rows_trained"),
+        "rows_tested":      results.get("rows_tested"),
+        "n_features":       results.get("n_features"),
+        "feature_importance_source": results.get("feature_importance_source"),
+        "feature_importance": results.get("feature_importance"),
     }

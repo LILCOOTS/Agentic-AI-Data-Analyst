@@ -1,11 +1,11 @@
 import pandas as pd
 import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LogisticRegression, LinearRegression, Ridge
+from sklearn.model_selection import train_test_split, cross_val_score, StratifiedKFold, KFold
+from sklearn.linear_model import LogisticRegression, Ridge
 from sklearn.ensemble import (
     RandomForestRegressor, RandomForestClassifier,
     HistGradientBoostingRegressor, HistGradientBoostingClassifier,
-    StackingRegressor, StackingClassifier
+    VotingRegressor, VotingClassifier
 )
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import (
@@ -43,10 +43,12 @@ def run_modeling(df: pd.DataFrame, target_col: str, problem_type: str) -> dict:
     X = pd.get_dummies(X, drop_first=True)
 
     # ── Drop any remaining NaN rows (safety net) ─────────────────────────
-    valid = X.notna().all(axis=1) & y.notna()
-    X, y = X[valid], y[valid]
+    # (Since missing values are handled in cleaning, this is purely safety)
+    valid_idx = X.notna().all(axis=1) & y.notna()
+    X = X[valid_idx]
+    y = y[valid_idx]
 
-    if len(X) < 10:
+    if len(X) < 50:
         raise ValueError("Not enough valid rows to train a model after cleaning.")
 
     # ── Target scaling for regression (if skewed) ──────────────────────────
@@ -67,24 +69,65 @@ def run_modeling(df: pd.DataFrame, target_col: str, problem_type: str) -> dict:
 
     # ── Model selection ───────────────────────────────────────────────────
     if problem_type == "classification":
-        base_models = [
-            ("rf", RandomForestClassifier(n_estimators=100, random_state=42)),
-            ("hgb", HistGradientBoostingClassifier(random_state=42)),
-            ("logreg", LogisticRegression(max_iter=1000, solver="lbfgs"))
-        ]
-        meta_model = LogisticRegression(max_iter=1000, solver="lbfgs")
-        model = StackingClassifier(estimators=base_models, final_estimator=meta_model, cv=5)
+        models = {
+            "random_forest": RandomForestClassifier(n_estimators=100, random_state=42),
+            "gradient_boosting": HistGradientBoostingClassifier(random_state=42),
+            "logistic_regression": LogisticRegression(max_iter=1000, solver="lbfgs")
+        }
+        cv_metric = "roc_auc"
+        cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
     else:
-        base_models = [
-            ("rf", RandomForestRegressor(n_estimators=100, random_state=42)),
-            ("hgb", HistGradientBoostingRegressor(random_state=42)),
-            ("ridge", Ridge())
-        ]
-        meta_model = Ridge()
-        model = StackingRegressor(estimators=base_models, final_estimator=meta_model, cv=5)
+        models = {
+            "random_forest": RandomForestRegressor(n_estimators=100, random_state=42),
+            "gradient_boosting": HistGradientBoostingRegressor(random_state=42),
+            "ridge_regression": Ridge()
+        }
+        cv_metric = "r2"
+        cv = KFold(n_splits=5, shuffle=True, random_state=42)
 
-    model.fit(X_train_sc, y_train)
-    y_pred = model.predict(X_test_sc)
+    # ── Cross Validation ──────────────────────────────────────────────────
+    models_performance = {}
+    best_model_name = None
+    best_score = -float('inf')
+    cv_score_mean = 0.0
+    cv_score_std = 0.0
+
+    for name, m in models.items():
+        # Fallback metric if binary classification roc_auc fails
+        metric_to_use = cv_metric
+        if problem_type == "classification" and len(np.unique(y_train)) > 2:
+            metric_to_use = "accuracy" # multi-class fallback
+
+        try:
+            scores = cross_val_score(m, X_train_sc, y_train, cv=cv, scoring=metric_to_use)
+            mean_score = float(scores.mean())
+            std_score = float(scores.std())
+        except Exception:
+            mean_score, std_score = 0.0, 0.0
+        
+        models_performance[name] = round(mean_score, 4)
+        
+        if mean_score > best_score:
+            best_score = mean_score
+            best_model_name = name
+            cv_score_mean = mean_score
+            cv_score_std = std_score
+
+    # ── Retrain Winner & Ensemble ──────────────────────────────────────────
+    # Create Voting Ensemble
+    if problem_type == "classification":
+        # 'soft' voting uses probabilities for better ROC-AUC natively
+        ensemble_model = VotingClassifier(
+            estimators=[(k, v) for k, v in models.items()],
+            voting="soft"
+        )
+    else:
+        ensemble_model = VotingRegressor(
+            estimators=[(k, v) for k, v in models.items()]
+        )
+
+    ensemble_model.fit(X_train_sc, y_train)
+    y_pred = ensemble_model.predict(X_test_sc)
 
     # ── Metrics ───────────────────────────────────────────────────────────
     if problem_type == "classification":
@@ -93,7 +136,7 @@ def run_modeling(df: pd.DataFrame, target_col: str, problem_type: str) -> dict:
         
         # Calculate robust performance metrics natively for classification
         try:
-            y_prob = model.predict_proba(X_test)
+            y_prob = ensemble_model.predict_proba(X_test_sc)
             # Handle multi-class vs binary
             if len(np.unique(y_train)) == 2:
                 roc_auc = roc_auc_score(y_test, y_prob[:, 1])
@@ -126,8 +169,8 @@ def run_modeling(df: pd.DataFrame, target_col: str, problem_type: str) -> dict:
 
     # ── Feature importance ────────────────────────────────────────────────
     # We extract absolute feature importance directly from the Random Forest
-    # base estimator inside the trained stack, yielding powerful non-linear importance.
-    rf_estimator = model.named_estimators_["rf"]
+    rf_estimator = models["random_forest"]
+    rf_estimator.fit(X_train_sc, y_train)
     importance = rf_estimator.feature_importances_
 
     feature_importance = (
@@ -139,14 +182,17 @@ def run_modeling(df: pd.DataFrame, target_col: str, problem_type: str) -> dict:
 
     return {
         "problem_type": problem_type,
-        "model_architecture": "StackingEnsemble (RandomForest + HistGradientBoosting + Linear)",
+        "models_performance": models_performance,
+        "best_model": best_model_name,
+        "model_architecture": "VotingEnsemble (AutoML Base Models Averaged)",
         "metric_name":  metric_name,
         "metric_value": metric_value,
+        "cv_score_mean": round(cv_score_mean, 4),
+        "cv_score_std": round(cv_score_std, 4),
         "extra_metrics": extra,
         "rows_trained":  int(len(X_train)),
         "rows_tested":   int(len(X_test)),
         "n_features":    int(X.shape[1]),
-        "feature_importance_source": "RandomForest (Level 0 Base Estimator)",
-        # Plain list of dicts — JSON-serializable, no DataFrame
+        "feature_importance_source": "RandomForest",
         "feature_importance": feature_importance.to_dict(orient="records"),
     }

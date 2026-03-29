@@ -341,11 +341,11 @@ def run_full_analysis(df, metadata, data_quality, forced_target: str = None):
 
     return {
         "selected_columns": selected,
-        # "eda": {
-        #     "univariate": univariate,
-        #     "bivariate": bivariate,
-        #     "correlation": correlation,
-        #     "target_analysis": target_analysis
-        # },
+        "eda": {
+            "univariate": univariate,
+            "bivariate": bivariate,
+            "correlation": correlation,
+            "target_analysis": target_analysis
+        },
         "insights": insights
     }

@@ -122,8 +122,8 @@ def generate_cleaning_action_report(metadata, data_quality, target_col=None):
             
         actions.append({
             "column": col,
-            "action": "frequency_encode",
-            "reason": "High cardinality categorical — frequency encoding to prevent dimensionality explosion"
+            "action": "drop_column",
+            "reason": "High cardinality categorical — dropping to prevent dimensionality explosion and encoding bias"
         })
 
     return actions

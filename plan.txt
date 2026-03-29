@@ -1,0 +1,1118 @@
+this is the chat b/w me and ChatGPT from the beginning of the project like from the idea phase to the planning phase 
+this is just for the reference for the bigger picture and chances are the plans have been changed as compared to the current state of the project
+
+i was thinking of a genai/ agentic ai project of automated EDA / analysis to automate the task like data analysis and provide various features like providing theorytical analysis  as well as graphical analysis via a proper EDA or via some PowerBI/Tableu analysis which gets followed in real life 
+some other functionality which i can think of is taking dataset as input and providing a clean version of it in one click 
+i will keep updating any other functionality if i come across it, until then you can suggest for any other thing which i am missing or not , or any other thing which I can add
+
+Om, this is actually a very strong project idea — especially for your ML + backend background. If you execute it properly, this can become a portfolio-level GenAI + Agentic AI system, not just a script that runs .describe().
+
+Let’s structure this properly.
+
+🚀 Project Idea: Agentic AI for Automated EDA & Business Analytics
+
+Instead of just “Auto EDA”, think bigger:
+
+AI Data Analyst Assistant
+Upload dataset → AI explores → cleans → analyzes → visualizes → explains → recommends next steps → optionally exports dashboard.
+
+Now let’s break it down properly.
+
+🧠 1️⃣ Core Architecture (Make It Agentic, Not Just Scripted)
+
+Instead of a single pipeline, build multiple agents:
+
+🧩 Possible Agents
+Data Profiler Agent
+Detects:
+Missing values
+Data types
+Cardinality
+Outliers
+Class imbalance
+Generates:
+Structured summary
+Statistical overview
+Data Cleaning Agent
+Suggests:
+Missing value treatment
+Encoding strategy
+Outlier treatment
+Duplicate removal
+Allows:
+One-click “Auto Clean”
+Or human approval (human-in-the-loop)
+EDA Agent
+Numerical analysis
+Categorical analysis
+Correlation heatmaps
+Distribution plots
+Skewness detection
+Multivariate analysis
+Insight Generation Agent (GenAI layer)
+Converts graphs → business explanation
+
+Example:
+
+“Feature X shows strong positive correlation with Sales, indicating marketing spend may influence revenue.”
+
+Visualization Agent
+Matplotlib / Plotly for charts
+Or generate:
+PowerBI-ready dataset
+Tableau-ready dataset
+Auto-generated dashboard JSON
+Business Recommendation Agent
+Suggest:
+Classification vs Regression
+Feature engineering ideas
+Model suggestions
+Data imbalance warning
+📊 2️⃣ Graphical Analysis You Should Include
+
+Use image_group for showcasing types of visualizations (for your understanding and portfolio inspiration).
+
+📈 Univariate Analysis
+4
+📊 Correlation & Multivariate
+4
+
+Your agent should:
+
+Automatically decide which plots are relevant
+Avoid redundant graphs
+Prioritize most informative visuals
+
+That’s where the “agentic intelligence” lies.
+
+🔥 3️⃣ Features You’re Missing (Add These)
+
+Here are powerful additions:
+
+✅ A. Dataset Understanding Mode
+
+User asks:
+
+“Is this dataset suitable for classification?”
+
+AI should:
+
+Detect target column
+Identify class imbalance
+Suggest problem type
+Estimate model complexity
+✅ B. Auto Data Storytelling (Very Powerful)
+
+Generate:
+
+Executive summary (non-technical)
+Technical summary (for data scientists)
+Bullet-point insights
+Risks in data
+
+This is where LLM shines.
+
+✅ C. Feature Importance Simulation
+
+Even before modeling:
+
+Run quick baseline model
+Show:
+Feature importance
+SHAP-like explanation (optional advanced)
+✅ D. Anomaly Detection Mode
+Isolation Forest
+Z-score
+IQR-based detection
+Flag suspicious rows
+✅ E. Data Drift Detection (Advanced / Industry Level)
+
+Compare:
+
+Training dataset vs new dataset
+Show distribution shifts
+
+This makes your project industry-level.
+
+✅ F. SQL + CSV + Excel + API Support
+
+Instead of only CSV:
+
+Upload CSV
+Connect to database
+Connect to Kaggle dataset
+Connect to Google Sheets
+
+Now it becomes a product.
+
+✅ G. Natural Language Querying
+
+User types:
+
+“Show me sales trend for region west”
+
+Agent:
+
+Parses request
+Generates chart
+Explains it
+
+This makes it feel like ChatGPT for data.
+
+🏗 4️⃣ Make It Realistic Like PowerBI / Tableau
+
+Mention these real-world tools:
+
+Microsoft Power BI
+Tableau
+
+What they do:
+
+Drag & drop
+Auto aggregations
+Interactive dashboards
+Filtering
+
+You can mimic:
+
+Auto dashboard builder
+Dynamic filtering
+Drill-down support
+🧠 5️⃣ Make It Truly Agentic (Important)
+
+Instead of:
+
+run_eda()
+run_cleaning()
+
+Make it:
+
+Planner Agent
+Tool-calling architecture
+Decision making:
+If missing > 30% → suggest drop
+If skewed → suggest log transform
+If imbalance > threshold → suggest SMOTE
+
+This shows actual reasoning.
+
+🛠 6️⃣ Tech Stack Suggestion (Based on Your Background)
+
+Since you're strong in:
+
+Python
+ML
+Backend
+Full-stack apps
+
+I suggest:
+
+Backend:
+
+FastAPI
+LangChain / LlamaIndex
+Pandas
+Scikit-learn
+Plotly
+
+Frontend:
+
+React or simple dashboard
+OR Streamlit (faster)
+
+Advanced:
+
+Vector store to remember previous dataset insights
+Session-based memory
+📦 7️⃣ Output Formats You Should Provide
+
+User can export:
+
+📄 PDF report
+📊 PowerBI compatible file
+📈 Dashboard JSON
+🧠 Markdown business report
+🏆 8️⃣ If You Want This to Be Resume-Level Strong
+
+Add:
+
+Modular multi-agent design
+Real-world dataset benchmarks
+Unit tests
+LLM evaluation metrics
+Cost tracking per analysis
+
+Now it becomes serious engineering.
+
+🎯 9️⃣ Positioning (Very Important)
+
+Don’t call it:
+
+“Automated EDA Tool”
+
+Call it:
+
+Agentic AI Data Analyst
+
+or
+
+AI-Powered Autonomous Data Intelligence Platform
+
+Positioning matters for recruiters.
+
+💡 10️⃣ Future Extensions
+Real-time streaming data analysis
+RAG on dataset documentation
+Business KPI auto-detection
+Conversational BI
+Model auto-training pipeline
+🧠 My Honest Opinion (Strategic Advice for You)
+
+Given:
+
+You already built ML systems
+You like backend
+You’re exploring GenAI
+
+This project can:
+
+Combine ML + LLM + Agents
+Be better than 90% of generic “Chat with PDF” projects
+Show serious engineering maturity
+
+If built correctly, this could be your:
+
+🔥 Flagship portfolio project
+
+If you want, next we can:
+
+Design system architecture diagram
+Break into MVP vs Advanced version
+Or define version 1 roadmap (4-week execution plan)
+
+Tell me which direction you want to take.
+
+all those features you told seems 10/10 which i will work towards
+i still had a doubt that does PowerBI/Tableu provide any MCP or any other functionality to directly send the requirements to them and they work behind the scene to provide their functionality directly to our project ?
+
+Excellent question. This is exactly the kind of thinking that separates a cool project from a real product architecture decision.
+
+Short answer:
+
+❌ Power BI and Tableau do NOT provide an MCP-style “send requirement → they build dashboard for you behind the scenes” API.
+
+But they do provide APIs and embedding capabilities. Let’s break this properly.
+
+1️⃣ First — What You’re Really Asking
+
+You’re basically asking:
+
+“Can my AI agent send instructions like ‘Create sales dashboard grouped by region’ to Power BI/Tableau and they automatically generate it?”
+
+This would require:
+
+A programmatic dashboard creation API
+Natural language → dashboard builder engine exposed publicly
+
+Currently:
+
+They do not expose that level of automation
+They are tools, not AI agents you can delegate to
+2️⃣ 🟡 Microsoft Power BI
+
+Microsoft Power BI
+
+What Power BI DOES Provide:
+✅ REST API
+Manage datasets
+Refresh datasets
+Push data
+Manage reports
+Manage dashboards
+Row-level security
+✅ Embedding
+Power BI Embedded (for SaaS apps)
+Embed dashboards inside your web app
+✅ XMLA endpoint (Premium)
+Programmatic dataset management
+❌ What It Does NOT Provide:
+“Create a full dashboard from this dataset and these NL instructions”
+Full dashboard auto-generation API
+Natural-language-to-dashboard builder via API
+
+Power BI does have:
+
+“Q&A” feature (natural language inside Power BI UI)
+But:
+Not exposed as a programmable external service.
+3️⃣ 🟣 Tableau
+
+Tableau
+
+What Tableau Provides:
+✅ Tableau REST API
+Publish data sources
+Publish workbooks
+Manage users
+Refresh extracts
+✅ Tableau Server Client (Python SDK)
+✅ Embedding dashboards
+❌ What It Does NOT Provide:
+“Send NL request → auto-build dashboard”
+Full dashboard generation via API
+Agent-style delegation
+
+Tableau also has:
+
+“Ask Data” (NL feature inside Tableau)
+But again:
+Not exposed as an AI backend service for your app.
+4️⃣ What Industry Actually Does
+
+In real SaaS products:
+
+Instead of delegating to Power BI or Tableau, companies:
+
+Option A — Embed Them
+
+Your flow:
+
+AI cleans data
+Upload cleaned dataset to Power BI
+Embed dashboard in your app
+
+You’re just hosting their visualization engine.
+
+Option B — Rebuild Similar Functionality
+
+Modern AI analytics startups:
+
+Generate charts with Plotly
+Use LLM for explanations
+Build dynamic dashboards
+Keep everything inside their product
+
+This is usually preferred.
+
+5️⃣ If You Want “Agent → Dashboard” Behavior
+
+You have 3 realistic paths:
+
+🟢 Path 1 (Recommended for You)
+
+Build your own dashboard generator.
+
+Flow:
+
+User uploads dataset
+↓
+Planner agent decides visuals
+↓
+Visualization agent generates Plotly dashboard
+↓
+LLM explains insights
+↓
+Export as:
+
+PDF
+HTML dashboard
+JSON config
+
+This keeps everything under your control.
+
+🟢 Path 2 (Hybrid Approach)
+
+Your AI:
+
+Cleans data
+Generates summary
+Uploads dataset to Power BI via REST API
+Embeds prebuilt template dashboard
+
+But:
+You must pre-design dashboard template in Power BI.
+
+🟢 Path 3 (Advanced Enterprise Idea)
+
+Auto-generate:
+
+.pbix structure
+Tableau workbook XML
+
+But this is:
+
+Extremely complex
+Poorly documented
+Not worth it for portfolio
+6️⃣ What You Should Do (Strategic Advice)
+
+Given your skills:
+
+You should:
+
+🔥 Build your own intelligent dashboard generator.
+
+Why?
+
+Full control
+Better for learning
+Easier to demo
+More innovative
+Avoids enterprise licensing issues
+Makes it truly agentic
+7️⃣ What Would Be REALLY Impressive
+
+Instead of relying on Power BI:
+
+Create:
+
+“AI-generated Interactive Dashboard Engine”
+
+Features:
+
+Auto layout
+Auto best chart selection
+Drill-down support
+Filter widgets
+Natural language querying
+Auto color scheme
+KPI cards
+Business summary panel
+
+That’s FAR more impressive.
+
+8️⃣ One Important Industry Reality
+
+Power BI and Tableau are:
+
+Enterprise BI tools
+Not AI microservices
+
+They are:
+
+Visualization platforms
+Not autonomous analytics engines
+
+Your project is actually competing with:
+
+ThoughtSpot
+Mode Analytics
+Hex
+DataRobot Auto Insights
+
+That’s powerful positioning.
+
+🎯 Final Verdict
+
+Power BI/Tableau:
+
+❌ No MCP-style delegation
+❌ No auto dashboard API from NL
+✅ REST APIs for management
+✅ Embedding
+✅ Dataset publishing
+
+For your GenAI agent project:
+
+👉 Build your own intelligent dashboard system.
+👉 Optionally allow export to Power BI-friendly format.
+👉 But don’t depend on them.
+
+If you want, next we can:
+
+Design your system architecture
+Define MVP scope
+Or define how your agent should select “best visualization”
+
+Tell me which direction you want.
+
+lets stick to the previous conversation considering all of those multiple features you talked about 
+so i was thinking for FastAPI + Streamlit combo to serve the app 
+now tell me one thing, does this require any sort of fine-tuning to make the LLM/agent perform its specified task 
+you can start with the architecture after this
+
+Perfect. This is now becoming a serious system design discussion, not just a project idea.
+
+You’re thinking correctly:
+FastAPI (backend brain) + Streamlit (UI layer) → very good combo for MVP.
+
+Now let’s answer your most important question first:
+
+❓ Do You Need Fine-Tuning for This?
+
+Short answer:
+
+❌ No, you do NOT need fine-tuning to build this system properly.
+
+In fact, fine-tuning would be the wrong first step.
+
+Let me explain properly.
+
+🧠 Why You Don’t Need Fine-Tuning
+
+Your system is mostly:
+
+Structured reasoning
+Tool calling
+Deterministic code execution
+Dataset-specific logic
+
+This is not:
+
+Domain knowledge adaptation
+Style adaptation
+Industry-specific training
+
+This is:
+
+Tool orchestration + reasoning + structured outputs
+
+That’s exactly what modern LLMs are already good at.
+
+🎯 What You Actually Need Instead
+
+Instead of fine-tuning, you need:
+
+1️⃣ Strong System Prompting
+
+Define:
+
+The role of each agent
+Output format constraints
+Tool usage rules
+Decision logic
+2️⃣ Tool Calling Architecture
+
+LLM decides:
+
+“Missing values > 40% → suggest drop”
+“Column numeric → histogram”
+“Target detected → classification analysis”
+
+This is orchestration, not fine-tuning.
+
+3️⃣ Guardrails + Structured Outputs
+
+Use:
+
+Pydantic schemas
+JSON mode
+Function calling
+Deterministic backend code
+
+Your backend will:
+
+Execute cleaning
+Execute EDA
+Generate plots
+Compute stats
+
+LLM only:
+
+Plans
+Explains
+Decides
+🛑 When Would You Need Fine-Tuning?
+
+You would need fine-tuning if:
+
+You want domain-specific finance analysis
+You want healthcare-specific insight generation
+You want highly structured domain vocabulary
+You want consistent output tone at scale
+
+But for:
+
+AI Data Analyst Assistant
+
+Prompt engineering + tool calling is more than enough.
+
+🏗 Now Let’s Design The Architecture
+
+This is the interesting part.
+
+🧠 High-Level System Architecture
+          Streamlit UI
+                ↓
+           FastAPI Backend
+                ↓
+        Agent Orchestrator
+                ↓
+        ┌───────────────┬───────────────┬───────────────┐
+        ↓               ↓               ↓
+  Data Tools      Visualization      ML Tools
+  (pandas)           Tools          (sklearn)
+🧩 Layer 1 — Frontend (Streamlit)
+
+Responsibilities:
+
+Upload dataset
+Show:
+Summary
+Graphs
+Cleaning suggestions
+
+Accept NL queries:
+
+“Show correlation with target”
+
+Show generated insights
+
+Streamlit is perfect for this because:
+
+Fast prototyping
+Built-in charts
+Stateful sessions
+🧠 Layer 2 — FastAPI (Backend Brain)
+
+FastAPI handles:
+
+File upload
+Session management
+Calling agents
+Executing tools
+Returning JSON results
+
+Streamlit talks to FastAPI via REST endpoints.
+
+🤖 Layer 3 — Agent Orchestrator
+
+This is the heart.
+
+You build:
+
+🔹 Planner Agent
+
+Understands:
+
+Dataset structure
+User request
+Decides which tools to call
+🔹 Tool Executor
+
+Executes:
+
+Pandas profiling
+Sklearn models
+Plot generation
+Cleaning pipeline
+🔹 Insight Generator Agent
+
+Takes:
+
+Stats
+Graph outputs
+Model outputs
+And converts into:
+Business summary
+Technical explanation
+🧪 Tools Layer
+
+No LLM here. Pure deterministic code.
+
+Examples:
+
+detect_missing_values()
+generate_histogram()
+run_baseline_model()
+detect_outliers()
+compute_correlation_matrix()
+
+This separation is VERY important.
+
+🔁 Example Flow (Dataset Upload)
+
+User uploads dataset.
+
+Step 1: Data Profiler Tool runs
+
+Returns:
+
+Missing %
+Dtypes
+Cardinality
+Skewness
+Correlation
+Step 2: Planner Agent receives structured metadata
+
+Planner decides:
+
+If target exists → supervised path
+If no target → unsupervised EDA path
+If missing > threshold → call cleaning suggestion
+Step 3: Visualization Tool generates charts
+Step 4: Insight Agent generates explanation
+🧠 What Makes It “Agentic”?
+
+Not just running all tools blindly.
+
+But:
+
+Conditional reasoning
+Dynamic tool selection
+User-in-the-loop decisions
+Iterative analysis
+
+Example:
+
+User:
+
+“Focus only on Region = West”
+
+Planner:
+
+Filters dataset
+Re-runs analysis
+Updates charts
+Regenerates insights
+📦 Suggested MVP Scope (Don’t Build Everything At Once)
+
+Version 1:
+
+CSV upload
+Auto profiling
+Missing value detection
+Correlation heatmap
+Distribution plots
+Auto insight generation
+Natural language query to generate specific chart
+
+That’s enough for v1.
+
+🚀 Advanced Version (Later)
+Multi-agent orchestration
+Baseline ML auto-training
+Feature importance
+Data drift
+Anomaly detection
+Exportable PDF report
+Memory of past datasets
+🔥 Very Important Advice For You
+
+Given your ML background:
+
+Do NOT let LLM:
+
+Clean data
+Write pandas code blindly
+Modify dataset directly
+
+Instead:
+
+LLM decides → Backend executes.
+
+That’s production-style design.
+
+🧠 Final Answer Summary
+
+Do you need fine-tuning?
+
+❌ No.
+
+What do you need?
+
+Prompt design
+Tool calling
+Orchestrator architecture
+Deterministic backend logic
+
+If you want next, we can:
+
+Design detailed folder structure
+Design agent prompts
+Design tool interface schemas
+Or create a 4-week build roadmap
+
+Tell me what you want to deep dive into.
+
+* Design detailed folder structure * Design agent prompts * Design tool interface schemas * Or create a 4-week build roadmap
+
+do it
+
+Perfect. We’ll design this like a real product, not a hackathon script.
+
+I’ll cover all four:
+
+Folder structure
+Agent prompt design
+Tool interface schemas
+4-week execution roadmap
+🏗 1️⃣ Detailed Folder Structure
+
+You’re using FastAPI + Streamlit, so separate:
+
+UI layer
+API layer
+Agent layer
+Tool layer
+Core logic
+
+Here’s a clean production-style structure:
+
+ai-data-analyst/
+│
+├── backend/
+│   ├── main.py                 # FastAPI entrypoint
+│   ├── config.py
+│   │
+│   ├── api/
+│   │   ├── routes.py           # REST endpoints
+│   │   └── schemas.py          # Pydantic request/response models
+│   │
+│   ├── agents/
+│   │   ├── orchestrator.py     # Planner logic
+│   │   ├── planner_agent.py
+│   │   ├── insight_agent.py
+│   │   └── nl_query_agent.py
+│   │
+│   ├── tools/
+│   │   ├── profiling.py
+│   │   ├── cleaning.py
+│   │   ├── visualization.py
+│   │   ├── modeling.py
+│   │   └── anomaly.py
+│   │
+│   ├── core/
+│   │   ├── dataset_manager.py
+│   │   ├── session_manager.py
+│   │   └── logger.py
+│   │
+│   └── utils/
+│       ├── llm_client.py
+│       └── json_parser.py
+│
+├── frontend/
+│   ├── app.py                  # Streamlit app
+│   ├── pages/
+│   │   ├── upload.py
+│   │   ├── eda.py
+│   │   ├── insights.py
+│   │   └── nl_query.py
+│   │
+│   └── components/
+│       ├── charts.py
+│       └── summary_cards.py
+│
+├── tests/
+├── requirements.txt
+└── README.md
+
+This structure already makes recruiters think:
+
+“This person understands system design.”
+
+🧠 2️⃣ Agent Prompt Design
+
+You need clear role separation.
+
+Do NOT use one giant “smart LLM”.
+
+🔹 A. Planner Agent Prompt
+
+Role: Decide what tools to call.
+
+System Prompt:
+
+You are a Data Analysis Planner Agent.
+
+Your job is to:
+1. Analyze dataset metadata.
+2. Decide which analytical tools should be executed.
+3. Output a structured JSON plan.
+4. Never generate code.
+5. Never modify data directly.
+
+Available tools:
+- profile_data
+- detect_missing_values
+- detect_outliers
+- generate_univariate_plots
+- generate_correlation_matrix
+- run_baseline_model
+- detect_anomalies
+
+Return output strictly in JSON:
+{
+  "analysis_type": "",
+  "tools_to_call": [],
+  "reasoning": ""
+}
+
+Important:
+LLM must not hallucinate tools.
+
+🔹 B. Insight Agent Prompt
+
+Role: Convert raw stats → human explanation.
+
+System Prompt:
+
+You are a Senior Data Analyst.
+
+You will receive:
+- Statistical summaries
+- Model metrics
+- Correlation results
+- Visualization descriptions
+
+Your job:
+1. Generate business-level insights.
+2. Generate technical-level explanation.
+3. Highlight risks in the dataset.
+4. Be concise but meaningful.
+5. Never fabricate statistics.
+🔹 C. Natural Language Query Agent
+
+User says:
+
+“Show me sales trend by region.”
+
+System Prompt:
+
+You are a Data Query Interpreter.
+
+Your job:
+1. Parse the user’s request.
+2. Identify:
+   - Target column
+   - Grouping column
+   - Required aggregation
+   - Required chart type
+3. Output structured JSON:
+{
+  "operation": "",
+  "columns": [],
+  "aggregation": "",
+  "chart_type": ""
+}
+
+Backend executes it.
+
+🧾 3️⃣ Tool Interface Schemas (Very Important)
+
+Never let LLM return free text for tool execution.
+
+Use Pydantic schemas.
+
+Example: Tool Call Schema
+class ToolPlan(BaseModel):
+    analysis_type: str
+    tools_to_call: List[str]
+    reasoning: str
+Example: Visualization Request Schema
+class VisualizationRequest(BaseModel):
+    chart_type: str
+    x_column: str
+    y_column: Optional[str]
+    aggregation: Optional[str]
+Example: Insight Input Schema
+class InsightInput(BaseModel):
+    summary_stats: dict
+    correlation_matrix: dict
+    model_metrics: Optional[dict]
+
+Your backend flow:
+
+LLM → JSON → Validate → Execute Tool → Return structured result.
+
+If JSON invalid:
+
+Reject
+Retry
+
+That’s production thinking.
+
+🗺 4️⃣ 4-Week Build Roadmap
+
+You need disciplined execution.
+
+📅 Week 1 — Core Infrastructure
+
+Goal: Upload + profiling working.
+
+Setup FastAPI
+Setup Streamlit
+CSV upload endpoint
+Dataset manager
+Basic profiling tool:
+Missing values
+Data types
+Unique counts
+Display summary in UI
+
+No LLM yet.
+
+📅 Week 2 — Planner Agent + Visualization
+
+Goal: Make it agent-driven.
+
+Add Planner Agent
+Add:
+Histogram
+Boxplot
+Correlation heatmap
+Planner decides which plots to generate
+Display them dynamically
+
+Now it feels intelligent.
+
+📅 Week 3 — Insight Generation + NL Query
+
+Goal: Make it feel like GenAI.
+
+Add Insight Agent
+Generate business summary
+Add NL query support
+Parse query → generate chart
+Add baseline ML (classification/regression auto detect)
+
+Now it becomes impressive.
+
+📅 Week 4 — Advanced + Polish
+Auto cleaning suggestions
+Outlier detection
+Anomaly detection
+Export PDF report
+Improve UI
+Add logging
+Add error handling
+Add evaluation cases
+
+Now it becomes portfolio-ready.
+
+🔥 Bonus: Make It Truly Impressive
+
+Add:
+
+“Confidence score” for insights
+Cost tracking per analysis
+Execution time tracking
+Dataset memory per session
+
+Recruiters LOVE metrics.
+
+🧠 Final Strategic Advice
+
+Your power here is:
+
+ML knowledge
+Backend design
+Agent orchestration
+
+This is NOT:
+“Chat with CSV”
+
+This becomes:
+
+Autonomous Data Intelligence System
+
+If executed properly, this can be your flagship project.
+
+Now tell me:
+
+Do you want to next:
+
+Design actual orchestrator logic flow
+Write the first Planner Agent prompt properly
+Start implementing Week 1 step-by-step
+Design database/session storage
