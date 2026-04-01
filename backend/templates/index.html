@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Data Analyst</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+    
+    <!-- Marked.js for Markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="glass-container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <span class="emoji">🤖</span>
+                <h1>AI Data Analyst</h1>
+            </div>
+            <div class="session-ctrl">
+                <input type="text" id="session-input" placeholder="Session ID auto-generated">
+            </div>
+        </header>
+
+        <!-- Dynamic Content Area -->
+        <main>
+            <!-- Upload Section -->
+            <section id="upload-section">
+                <div class="upload-card">
+                    <h2>Welcome to intelligent analytics.</h2>
+                    <p>Upload a CSV file to automatically profile, analyze, and visualize your dataset.</p>
+                    
+                    <div class="drop-zone" id="drop-zone">
+                        <span class="upload-icon">📁</span>
+                        <p>Drag &amp; Drop your CSV here</p>
+                        <p class="sub-text">or</p>
+                        <input type="file" id="file-input" accept=".csv" hidden>
+                        <button class="btn primary-btn" onclick="document.getElementById('file-input').click()">Browse Files</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loading Spinner — label updated dynamically via JS -->
+            <section id="loading-section" class="hidden">
+                <div class="spinner"></div>
+                <h2 id="loading-label">Analyzing...</h2>
+                <p id="loading-sub">Running statistical profiling and EDA.</p>
+            </section>
+
+            <!-- Dashboard View -->
+            <section id="dashboard-section" class="hidden">
+                <!-- Action Bar -->
+                <div class="action-bar">
+                    <button class="btn danger-btn" id="btn-clean">🧹 Auto-Clean Data</button>
+                    <button class="btn success-btn" id="btn-model">🧠 Predict Target (AutoML)</button>
+                </div>
+
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab-btn active" data-target="tab-summary">Summary</button>
+                    <button class="tab-btn" data-target="tab-insights">Insights</button>
+                    <button class="tab-btn" data-target="tab-eda">EDA Charts</button>
+                    <button class="tab-btn" data-target="tab-modeling" id="tab-modeling-btn">
+                        Modeling <span class="tab-badge hidden" id="model-badge">✓</span>
+                    </button>
+                </div>
+
+                <!-- Tab: Summary -->
+                <div class="tab-content active" id="tab-summary">
+                    <div class="summary-card" id="general-summary"></div>
+                    <div class="grid-2">
+                        <div class="card" id="key-findings">
+                            <h3>🔑 Key Findings</h3>
+                            <ul></ul>
+                        </div>
+                        <div class="card" id="correlation-ranking">
+                            <h3>📊 Correlation Ranking</h3>
+                            <ul></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Insights -->
+                <div class="tab-content" id="tab-insights">
+                    <div class="card">
+                        <h3>🎯 Target Analysis</h3>
+                        <ul id="target-analysis-list"></ul>
+                    </div>
+                    <div class="card">
+                        <h3>✅ Recommendations</h3>
+                        <ul id="recommendations-list"></ul>
+                    </div>
+                    <div class="card llm-card">
+                        <h3>🧠 AI Insights</h3>
+                        <div id="llm-insights-text"></div>
+                    </div>
+                </div>
+
+                <!-- Tab: EDA Charts -->
+                <div class="tab-content" id="tab-eda">
+                    <div class="chart-grid" id="chart-container">
+                        <!-- Charts injected here via JS -->
+                    </div>
+                </div>
+
+                <!-- Tab: Modeling Results -->
+                <div class="tab-content" id="tab-modeling">
+                    <div id="no-model-msg" class="card no-model-card">
+                        <span>🧠</span>
+                        <p>No model trained yet.</p>
+                        <p class="sub-text">Click <strong>"Predict Target (AutoML)"</strong> above to run the pipeline.</p>
+                    </div>
+                    <div id="model-results" class="hidden">
+                        <!-- Primary Metric Cards -->
+                        <div class="metric-row" id="metric-cards"></div>
+
+                        <!-- Model Comparison -->
+                        <div class="card">
+                            <h3>🏆 Model Comparison (5-Fold CV)</h3>
+                            <div id="model-bars"></div>
+                        </div>
+
+                        <!-- Feature Importance -->
+                        <div class="card">
+                            <h3>📌 Feature Importance <span class="source-label" id="fi-source"></span></h3>
+                            <div id="feature-bars"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/static/app.js"></script>
+</body>
+</html>

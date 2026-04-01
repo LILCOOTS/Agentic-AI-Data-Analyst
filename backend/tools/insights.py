@@ -212,9 +212,15 @@ def generate_key_findings(df, target, numerical_cols):
 
         direction = "positively" if corr > 0 else "negatively"
 
+        importance_label = (
+            "high" if abs_corr >= 0.4
+            else "moderate" if abs_corr >= 0.2
+            else "low"
+        )
+
         findings.append(
             f"'{col}' is {label} {direction} with '{target}' (r = {corr:.2f}), "
-            f"indicating {'high' if abs_corr >= 0.4 else 'limited'} predictive importance."
+            f"indicating {importance_label} predictive importance."
         )
 
     return findings

@@ -34,6 +34,7 @@ class SessionManager:
     def delete_session(self, session_id):
         if session_id in self.session_store:
             del self.session_store[session_id]
+            return {"status": "deleted", "session_id": session_id}
         raise HTTPException(status_code=404, detail="Session not found")
     
     def get_all_sessions(self):

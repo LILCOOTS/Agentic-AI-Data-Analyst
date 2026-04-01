@@ -1,6 +1,9 @@
 from fastapi import FastAPI, Request, UploadFile, File, Form, HTTPException
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
 import pandas as pd
 import io
+import os
 from fastapi.middleware.cors import CORSMiddleware
 from core.session_manager import SessionManager
 from tools.profiling import extract_metadata
@@ -20,12 +23,16 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
+# Setup Templates & Static Assets
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+app.mount("/static", StaticFiles(directory=os.path.join(BASE_DIR, "static")), name="static")
+templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
+
 app.state.session_manager = SessionManager()
 
-
 @app.get("/")
-async def home():
-    return "Welcome to AI Analyst"
+async def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
 @app.get("/health")

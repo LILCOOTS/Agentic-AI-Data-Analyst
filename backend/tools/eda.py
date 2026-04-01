@@ -214,7 +214,7 @@ def generate_bivariate_analysis(df, selected):
     for col1, col2 in selected["correlation_pairs"][:3]:
         # Filter weak correlations before plotting
         corr_val = round(float(df[[col1, col2]].dropna().corr(numeric_only=True).iloc[0, 1]), 3)
-        if abs(corr_val) < 0.3:
+        if abs(corr_val) < 0.2:
             continue
 
         try:
