@@ -66,6 +66,12 @@ class AgentState(TypedDict):
     # Safety cap: after 2 retries, Synthesizer gets a graceful fallback message
     retry_count: int
 
+    # ── Confirmation Gate (written by /chat/confirm endpoint on resume) ────────
+    # confirmed is set to True when the user clicks "Confirm" in the chat UI.
+    # The graph checks this in the Critic's routing edge to decide whether to
+    # proceed to Executor or redirect to Synthesizer with a "cancelled" message.
+    confirmed: bool
+
     # ── Response (written by Synthesizer) ─────────────────────────────────────
     # final_response is the markdown string streamed back to the chat panel
     final_response: Optional[str]
