@@ -195,4 +195,9 @@ def run_modeling(df: pd.DataFrame, target_col: str, problem_type: str) -> dict:
         "n_features":    int(X.shape[1]),
         "feature_importance_source": "RandomForest",
         "feature_importance": feature_importance.to_dict(orient="records"),
+        # ── Fitted objects (stored in session, NOT sent to frontend) ──────────
+        # These stay in session.modelling_results so predict_instance can use them.
+        "fitted_model":   ensemble_model,
+        "fitted_scaler":  scaler,
+        "feature_columns": list(X.columns),   # column order after get_dummies
     }

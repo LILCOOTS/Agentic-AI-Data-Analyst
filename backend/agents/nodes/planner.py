@@ -91,7 +91,7 @@ structured_llm = llm.with_structured_output(PlannerDecision)
 # We build the prompt dynamically from state fields so the LLM always has
 # accurate, real context — not hallucinated column names or target variables.
 
-def _build_system_prompt(state: AgentState) -> str:
+def build_system_prompt(state: AgentState) -> str:
     meta = state.get("dataset_metadata") or {}
     columns   = meta.get("columns", [])
     target    = meta.get("target_column", "unknown")
@@ -142,7 +142,7 @@ def planner_node(state: AgentState) -> dict:
     Returns a structured plan: which tool to call, with what args, and whether
     it's destructive (needs human confirmation before executing).
     """
-    system_prompt = _build_system_prompt(state)
+    system_prompt = build_system_prompt(state)
 
     # Build the message list: system context + full conversation history
     # The LLM sees everything that was said before — this is the memory payoff
@@ -150,7 +150,7 @@ def planner_node(state: AgentState) -> dict:
 
     # .invoke() here returns a PlannerDecision object (not raw text)
     # because we used .with_structured_output() above
-    decision: PlannerDecision = _structured_llm.invoke(messages)
+    decision: PlannerDecision = structured_llm.invoke(messages)
 
     # Log reasoning to console during development — remove in production
     print(f"[Planner] action={decision.planned_action} | destructive={decision.is_destructive}")

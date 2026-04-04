@@ -39,3 +39,11 @@ class SessionManager:
     
     def get_all_sessions(self):
         return self.session_store
+
+
+# ── Module-level singleton ────────────────────────────────────────────────────
+# Python's import system caches modules — so this object is created ONCE and
+# shared everywhere it's imported. Both main.py and tools/wrapper.py import
+# this same instance, so the agent always reads the same session data the
+# REST endpoints write to.
+session_manager = SessionManager()

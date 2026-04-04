@@ -5,7 +5,7 @@ import pandas as pd
 import io
 import os
 from fastapi.middleware.cors import CORSMiddleware
-from core.session_manager import SessionManager
+from core.session_manager import SessionManager, session_manager
 from tools.profiling import extract_metadata
 from tools.data_quality import analyze_data_quality
 from tools.eda import run_full_analysis
@@ -28,7 +28,9 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 app.mount("/static", StaticFiles(directory=os.path.join(BASE_DIR, "static")), name="static")
 templates = Jinja2Templates(directory=os.path.join(BASE_DIR, "templates"))
 
-app.state.session_manager = SessionManager()
+# session_manager is the module-level singleton from core/session_manager.py
+# app.state still holds a reference for any future middleware that needs it
+app.state.session_manager = session_manager
 
 @app.get("/")
 async def home(request: Request):
@@ -42,14 +44,14 @@ async def health():
 
 @app.post("/create_session")
 async def create_session(request: Request):
-    manager = request.app.state.session_manager
+    manager = session_manager
     session_id = manager.create_session()
     return {"session_id": session_id}
 
 
 @app.get("/get_sessions")
 async def get_sessions(request: Request):
-    manager = request.app.state.session_manager
+    manager = session_manager
     return manager.get_all_sessions()
 
 
@@ -59,7 +61,7 @@ async def upload_dataset(
     session_id: str = Form(...),
     file: UploadFile = File(...)
 ):
-    manager = request.app.state.session_manager
+    manager = session_manager
 
     # Clean 404 if session doesn't exist (get_session raises HTTPException already)
     session = manager.get_session(session_id)
@@ -95,7 +97,7 @@ async def upload_dataset(
 
 @app.get("/get_full_analysis")
 async def get_full_analysis(request: Request, session_id: str, refresh: bool = False, target_col: str = None):
-    manager = request.app.state.session_manager
+    manager = session_manager
     session = manager.get_session(session_id)
 
     if session.working_dataset is None:
@@ -123,7 +125,7 @@ async def get_full_analysis(request: Request, session_id: str, refresh: bool = F
 
 @app.post("/cleaning")
 async def cleaning(request: Request, session_id: str, target_col: str = None):
-    manager = request.app.state.session_manager
+    manager = session_manager
     session = manager.get_session(session_id)
 
     if session.working_dataset is None:
@@ -161,7 +163,7 @@ async def cleaning(request: Request, session_id: str, target_col: str = None):
 
 @app.post("/modeling")
 def modeling(request: Request, session_id: str):
-    manager = request.app.state.session_manager
+    manager = session_manager
     session = manager.get_session(session_id)
 
     if session.working_dataset is None:
@@ -179,6 +181,8 @@ def modeling(request: Request, session_id: str):
 
     try:
         results = run_modeling(session.working_dataset, target_col, prob_type)
+        # Store fitted model objects in session for predict_instance tool
+        session.modelling_results = results
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Modeling failed: {str(e)}")
 
