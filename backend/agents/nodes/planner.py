@@ -29,7 +29,7 @@ import json
 from dotenv import load_dotenv
 from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from langchain_core.messages import SystemMessage
 from langchain_groq import ChatGroq
 
@@ -50,7 +50,8 @@ class PlannerDecision(BaseModel):
         "predict",      # Predict a single instance using trained model
         "profile",      # Re-run full EDA profiling
         "compare",      # Compare dataset stats before vs after cleaning
-        "answer"        # General Q&A — no tool needed, just synthesize from context
+        "query",        # Execute pandas code to answer a data question (THE agentic tool)
+        "answer"        # General Q&A — no tool, synthesize from existing context only
     ] = Field(description="The single action to take based on the user's message")
 
     tool_args: dict = Field(
@@ -72,6 +73,16 @@ class PlannerDecision(BaseModel):
     reasoning: str = Field(
         description="One sentence explaining why you chose this action — used for debugging."
     )
+
+    # Groq occasionally returns is_destructive as a JSON string ("false", "true")
+    # instead of a native boolean, causing a 400 schema validation error.
+    # This validator coerces string → bool before Pydantic validates the type.
+    @field_validator("is_destructive", mode="before")
+    @classmethod
+    def coerce_bool(cls, v):
+        if isinstance(v, str):
+            return v.strip().lower() not in ("false", "0", "no", "none", "")
+        return bool(v)
 
 
 # ── LLM Setup ─────────────────────────────────────────────────────────────────
@@ -119,15 +130,24 @@ Your job is to read the user's latest message and decide which single action to 
 - `predict`    — Predict target for a single data point the user describes. Requires trained model.
 - `profile`    — Re-run full EDA analysis and refresh insights.
 - `compare`    — Show before vs after cleaning statistics.
-- `answer`     — Explain, interpret, or answer a question using existing context. No tool needed.
+- `query`      — Write and execute pandas code to answer a data question. Use for:
+                 * Counting/filtering rows ("how many X?", "find rows where Y")
+                 * Aggregations ("average balance by geography", "churn rate per group")
+                 * Distribution checks ("show distribution of X")
+                 * Outlier detection ("find outliers in Balance")
+                 * Any computation the user wants performed on the actual data
+- `answer`     — Explain, interpret, or answer using EXISTING context only. No computation.
 
 ## Rules
 1. Only choose `predict` if model_trained = Yes.
-2. Always set `tool_args` with at least `{{"session_id": "<session_id>"}}`.
-3. For `predict`, add `feature_values` dict with the column values the user mentioned.
+2. Always set `tool_args` with at least {{"session_id": "<session_id>"}}.
+3. For `predict`, add `feature_values` dict with column values the user mentioned.
 4. `run_clean` and `run_model` are always `is_destructive: true`.
-5. If unsure, default to `answer` — never guess a destructive action.
-6. session_id for this session: {state.get('session_id', '')}
+5. CRITICAL: Use `query` when the user wants to COMPUTE something new from the data.
+   Use `answer` only when the user wants EXPLANATION of results we already have.
+   When in doubt between query and answer, prefer `query` — real data beats guessing.
+6. For `query`, set tool_args["query"] to the user's question verbatim.
+7. session_id for this session: {state.get('session_id', '')}
 """
 
 

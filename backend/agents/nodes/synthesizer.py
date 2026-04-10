@@ -156,12 +156,42 @@ Before/After Comparison:
 """
 
 
+def _format_query_result(output: dict) -> str:
+    status      = output.get("status", "error")
+    result_type = output.get("result_type", "")
+    result      = output.get("result", "")
+    stdout      = output.get("stdout", "")
+    code        = output.get("code_executed", "")
+    shape       = output.get("shape")
+    error       = output.get("error", "")
+
+    if status == "error":
+        return f"""
+Code Execution Result: ERROR
+- Error: {error}
+- Code attempted:
+{code}
+"""
+
+    shape_str = f"({shape[0]} rows × {shape[1]} cols)" if shape and len(shape) == 2 else ""
+    return f"""
+Code Execution Result: SUCCESS
+- Result type: {result_type} {shape_str}
+- Result:
+{result}
+{f"- Console output: {stdout}" if stdout else ""}
+- Code that was run:
+{code}
+"""
+
+
 FORMATTERS = {
     "run_model": _format_model_result,
     "run_clean": _format_clean_result,
     "predict":   _format_predict_result,
     "profile":   _format_profile_result,
     "compare":   _format_compare_result,
+    "query":     _format_query_result,   # ⭐ new
 }
 
 

@@ -123,8 +123,21 @@ def critic_node(state: AgentState) -> dict:
     # If the action permanently modifies the session, pause and ask the user.
     # NodeInterrupt saves all current state to MemorySaver and returns the
     # message to the /chat endpoint. Graph resumes when /chat/confirm is called.
+    #
+    # KEY CONCEPT — Why we check `confirmed` here:
+    #   When NodeInterrupt is raised, LangGraph saves state with next=["critic"].
+    #   On resume (after user clicks Confirm), the graph REPLAYS the Critic node.
+    #   Without this check the Critic would raise NodeInterrupt again — infinite loop.
+    #   /chat/confirm calls agent.update_state({"confirmed": True}) BEFORE resuming,
+    #   so this check sees True on the replay and skips the interrupt cleanly.
+    #   We immediately reset confirmed → False so it doesn't bleed into future turns.
 
     if state.get("is_destructive") and action in CONFIRMATION_MESSAGES:
+        if state.get("confirmed"):
+            # User clicked Confirm → skip the interrupt on this replay run
+            print(f"[Critic] Confirmed — proceeding to Executor: {action}")
+            return {"confirmed": False}   # reset for next turn
+
         print(f"[Critic] Pausing for human confirmation: {action}")
         raise NodeInterrupt(CONFIRMATION_MESSAGES[action])
 
@@ -132,3 +145,4 @@ def critic_node(state: AgentState) -> dict:
     # profile, predict, compare, answer — no confirmation needed.
     print(f"[Critic] Auto-approved safe action: {action}")
     return {}   # Return empty dict — LangGraph merges nothing, state unchanged
+

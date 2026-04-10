@@ -142,6 +142,55 @@
         </main>
     </div>
 
+    <!-- ── Chat Widget ─────────────────────────────────────────────────── -->
+    <!-- Floating bubble toggle -->
+    <button id="chat-bubble" class="chat-bubble" onclick="toggleChat()" title="Ask AI">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+        <span id="chat-bubble-label">Ask AI</span>
+    </button>
+
+    <!-- Chat Panel -->
+    <div id="chat-panel" class="chat-panel">
+        <!-- Header -->
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <span class="chat-avatar">🤖</span>
+                <div>
+                    <div class="chat-title">AI Analyst</div>
+                    <div class="chat-status" id="chat-status">
+                        <span class="status-dot"></span> Ready
+                    </div>
+                </div>
+            </div>
+            <button class="chat-close-btn" onclick="toggleChat()" title="Close">✕</button>
+        </div>
+
+        <!-- Message list (scrollable) -->
+        <div class="chat-messages" id="chat-messages"></div>
+
+        <!-- Confirmation bar — rendered when NodeInterrupt fires -->
+        <div id="chat-confirm-bar" class="chat-confirm-bar hidden">
+            <div class="confirm-content" id="confirm-content"></div>
+            <div class="confirm-actions">
+                <button class="btn primary-btn" onclick="confirmAction(true)">✓ Confirm</button>
+                <button class="btn danger-btn"  onclick="confirmAction(false)">✕ Cancel</button>
+            </div>
+        </div>
+
+        <!-- Input bar -->
+        <div class="chat-footer">
+            <input id="chat-input" type="text"
+                   placeholder="Ask anything about your data..."
+                   onkeydown="if(event.key==='Enter') sendChatMessage()">
+            <button id="chat-send-btn" onclick="sendChatMessage()" title="Send">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                    <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                </svg>
+            </button>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="/static/app.js"></script>
 </body>

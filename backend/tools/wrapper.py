@@ -33,6 +33,7 @@ from tools.eda import run_full_analysis
 from tools.data_cleaning import generate_cleaning_action_report
 from tools.apply_cleaning import apply_cleaning
 from tools.modeling import run_modeling
+from tools.code_executor import run_query, safe_exec
 
 
 # ── Tool 1: Profile Dataset ───────────────────────────────────────────────────
@@ -241,6 +242,35 @@ def compare_pre_post_clean(session_id: str) -> dict:
     }
 
 
+# ── Tool 6: Execute Code / NL Query ─────────────────────────────────────────────
+# THE differentiating tool. Unlike all others, this one does NOT call a
+# predefined API endpoint. Instead:
+#   1. LLM generates novel pandas code from the user's NL question
+#   2. That code runs against the live DataFrame in a safe sandbox
+#   3. Any question, any computation, any filter = possible
+# No button on the dashboard can replicate this.
+
+@tool
+def execute_query_tool(session_id: str, query: str) -> dict:
+    """
+    Answer any data question by generating and executing pandas code on the
+    live dataset. Use for:
+      - Counting/filtering: 'how many customers in Germany?', 'find rows where...'
+      - Aggregations: 'average balance by geography', 'churn rate per age group'
+      - Distribution checks: 'show the distribution of CreditScore'
+      - Outlier detection: 'find outliers in Balance'
+      - Correlation checks: 'correlation between Age and churn'
+      - Any custom computation the user describes
+    The agent writes pandas code and executes it safely. Result is real data,
+    not a hallucinated answer.
+    """
+    session = session_manager.get_session(session_id)
+    if session.working_dataset is None:
+        return {"error": "No dataset found. Upload a CSV first."}
+
+    return run_query(query, session.working_dataset, session.raw_dataset)
+
+
 # ── Tool Registry ─────────────────────────────────────────────────────────────
 # The Executor imports this dict and does: TOOL_REGISTRY[planned_action](**args)
 # To add a new tool: write the @tool function above and add one entry here.
@@ -251,5 +281,6 @@ TOOL_REGISTRY: dict = {
     "run_model":   run_automl_tool,
     "predict":     predict_instance,
     "compare":     compare_pre_post_clean,
+    "query":       execute_query_tool,   # ⭐ the new agentic tool
     # "answer" is NOT in the registry — it routes directly to Synthesizer (no tool needed)
 }
