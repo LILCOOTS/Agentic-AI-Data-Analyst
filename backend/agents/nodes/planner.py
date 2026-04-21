@@ -52,26 +52,37 @@ class PlannerDecision(BaseModel):
         "compare",      # Compare dataset stats before vs after cleaning
         "query",        # Execute pandas code to answer a data question (THE agentic tool)
         "answer"        # General Q&A — no tool, synthesize from existing context only
-    ] = Field(description="The single action to take based on the user's message")
+    ] = Field(description="The FIRST action to take. If multi-step, this is step 1.")
+
+    plan_steps: list = Field(
+        default_factory=list,
+        description=(
+            "For multi-step requests, list ALL remaining actions AFTER the first one. "
+            "Example: user says 'profile then clean and train' → planned_action='profile', "
+            "plan_steps=['run_clean', 'run_model']. "
+            "For single-step requests, leave this empty []."
+        )
+    )
 
     tool_args: dict = Field(
         default_factory=dict,
         description=(
             "Arguments to pass to the tool. For most tools just pass session_id. "
-            "For predict, include feature_values dict with column names and values."
+            "For predict, include feature_values dict with column names and values. "
+            "For query, include query string."
         )
     )
 
     is_destructive: bool = Field(
         description=(
-            "True if this action permanently modifies the session state. "
+            "True if the FIRST action permanently modifies the session state. "
             "run_clean and run_model are always destructive. "
-            "predict, profile, compare, answer are never destructive."
+            "predict, profile, compare, query, answer are never destructive."
         )
     )
 
     reasoning: str = Field(
-        description="One sentence explaining why you chose this action — used for debugging."
+        description="One sentence explaining why you chose this action/plan — used for debugging."
     )
 
     # Groq occasionally returns is_destructive as a JSON string ("false", "true")
@@ -147,7 +158,16 @@ Your job is to read the user's latest message and decide which single action to 
    Use `answer` only when the user wants EXPLANATION of results we already have.
    When in doubt between query and answer, prefer `query` — real data beats guessing.
 6. For `query`, set tool_args["query"] to the user's question verbatim.
-7. session_id for this session: {state.get('session_id', '')}
+## Multi-Step Rules
+If the user requests MULTIPLE actions in one message, populate plan_steps:
+- "profile and clean" → planned_action="profile", plan_steps=["run_clean"]
+- "clean and train" → planned_action="run_clean", plan_steps=["run_model"]
+- "prepare and model" → planned_action="profile", plan_steps=["run_clean", "run_model"]
+- "analyze everything" → planned_action="profile", plan_steps=["run_model"]
+- Single-action messages → leave plan_steps=[]
+
+Only use actions from the Available Actions list. Keep steps in logical order.
+8. session_id for this session: {state.get('session_id', '')}
 """
 
 
@@ -161,6 +181,7 @@ def planner_node(state: AgentState) -> dict:
     Reads conversation history + dataset context.
     Returns a structured plan: which tool to call, with what args, and whether
     it's destructive (needs human confirmation before executing).
+    For multi-step requests, returns the first action + remaining steps in plan_steps.
     """
     system_prompt = build_system_prompt(state)
 
@@ -172,13 +193,16 @@ def planner_node(state: AgentState) -> dict:
     # because we used .with_structured_output() above
     decision: PlannerDecision = structured_llm.invoke(messages)
 
-    # Log reasoning to console during development — remove in production
-    print(f"[Planner] action={decision.planned_action} | destructive={decision.is_destructive}")
+    # Log reasoning to console during development
+    is_multi = bool(decision.plan_steps)
+    print(f"[Planner] action={decision.planned_action} | destructive={decision.is_destructive} | multi_step={is_multi}")
+    if is_multi:
+        print(f"[Planner] plan_steps={decision.plan_steps}")
     print(f"[Planner] reasoning: {decision.reasoning}")
 
-    # Return ONLY the fields we're updating — LangGraph merges these into state
     return {
         "planned_action": decision.planned_action,
         "tool_args":      decision.tool_args,
         "is_destructive": decision.is_destructive,
+        "plan_steps":     decision.plan_steps,   # [] for single-step, populated for multi
     }

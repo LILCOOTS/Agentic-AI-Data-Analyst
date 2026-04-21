@@ -1,0 +1,48 @@
+{
+  "files": {
+    "code": [
+      "backend\\config.py",
+      "backend\\main.py",
+      "backend\\agents\\graph.py",
+      "backend\\agents\\state.py",
+      "backend\\agents\\__init__.py",
+      "backend\\agents\\nodes\\continue_plan.py",
+      "backend\\agents\\nodes\\critic.py",
+      "backend\\agents\\nodes\\executor.py",
+      "backend\\agents\\nodes\\planner.py",
+      "backend\\agents\\nodes\\reflector.py",
+      "backend\\agents\\nodes\\synthesizer.py",
+      "backend\\agents\\nodes\\__init__.py",
+      "backend\\core\\session_manager.py",
+      "backend\\static\\app.js",
+      "backend\\tools\\apply_cleaning.py",
+      "backend\\tools\\code_executor.py",
+      "backend\\tools\\data_cleaning.py",
+      "backend\\tools\\data_quality.py",
+      "backend\\tools\\eda.py",
+      "backend\\tools\\insights.py",
+      "backend\\tools\\llm_insights.py",
+      "backend\\tools\\modeling.py",
+      "backend\\tools\\proactive_analyzer.py",
+      "backend\\tools\\profiling.py",
+      "backend\\tools\\wrapper.py",
+      "frontend\\app.py"
+    ],
+    "document": [
+      "AGENTIC_UPGRADE_IDEAS.md",
+      "langgraph_agent_architecture.md",
+      "plan.txt",
+      "backend\\templates\\index.html",
+      "backend\\tools\\data_quality.md"
+    ],
+    "paper": [],
+    "image": [],
+    "video": []
+  },
+  "total_files": 31,
+  "total_words": 25911,
+  "needs_graph": false,
+  "warning": "Corpus is ~25,911 words - fits in a single context window. You may not need a graph.",
+  "skipped_sensitive": [],
+  "graphifyignore_patterns": 0
+}

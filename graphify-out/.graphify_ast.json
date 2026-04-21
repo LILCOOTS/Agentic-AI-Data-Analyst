@@ -1,0 +1,5015 @@
+{
+  "nodes": [
+    {
+      "id": "backend_config_py",
+      "label": "config.py",
+      "file_type": "code",
+      "source_file": "backend\\config.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_main_py",
+      "label": "main.py",
+      "file_type": "code",
+      "source_file": "backend\\main.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "main_home",
+      "label": "home()",
+      "file_type": "code",
+      "source_file": "backend\\main.py",
+      "source_location": "L39"
+    },
+    {
+      "id": "main_health",
+      "label": "health()",
+      "file_type": "code",
+      "source_file": "backend\\main.py",
+      "source_location": "L44"
+    },
+    {
+      "id": "main_create_session",
+      "label": "create_session()",
+      "file_type": "code",
+      "source_file": "backend\\main.py",
+      "source_location": "L49"
+    },
+    {
+      "id": "main_get_sessions",
+      "label": "get_sessions()",
+      "file_type": "code",
+      "source_file": "backend\\main.py",
+      "source_location": "L56"
+    },
+    {
+      "id": "main_upload_dataset",
+      "label": "upload_dataset()",
+      "file_type": "code",
+      "source_file": "backend\\main.py",
+      "source_location": "L62"
+    },
+    {
+      "id": "main_get_full_analysis",
+      "label": "get_full_analysis()",
+      "file_type": "code",
+      "source_file": "backend\\main.py",
+      "source_location": "L102"
+    },
+    {
+      "id": "main_cleaning",
+      "label": "cleaning()",
+      "file_type": "code",
+      "source_file": "backend\\main.py",
+      "source_location": "L130"
+    },
+    {
+      "id": "main_modeling",
+      "label": "modeling()",
+      "file_type": "code",
+      "source_file": "backend\\main.py",
+      "source_location": "L168"
+    },
+    {
+      "id": "main_build_dataset_metadata",
+      "label": "_build_dataset_metadata()",
+      "file_type": "code",
+      "source_file": "backend\\main.py",
+      "source_location": "L233"
+    },
+    {
+      "id": "main_sse",
+      "label": "_sse()",
+      "file_type": "code",
+      "source_file": "backend\\main.py",
+      "source_location": "L247"
+    },
+    {
+      "id": "main_chat",
+      "label": "chat()",
+      "file_type": "code",
+      "source_file": "backend\\main.py",
+      "source_location": "L253"
+    },
+    {
+      "id": "main_chat_confirm",
+      "label": "chat_confirm()",
+      "file_type": "code",
+      "source_file": "backend\\main.py",
+      "source_location": "L342"
+    },
+    {
+      "id": "main_rationale_234",
+      "label": "Assembles the metadata dict the Planner's prompt needs from session objects.",
+      "file_type": "rationale",
+      "source_file": "backend\\main.py",
+      "source_location": "L234"
+    },
+    {
+      "id": "main_rationale_248",
+      "label": "Format a dict as a single SSE event line.",
+      "file_type": "rationale",
+      "source_file": "backend\\main.py",
+      "source_location": "L248"
+    },
+    {
+      "id": "main_rationale_254",
+      "label": "Main chat endpoint. Streams the agent's response token-by-token via SSE.     On",
+      "file_type": "rationale",
+      "source_file": "backend\\main.py",
+      "source_location": "L254"
+    },
+    {
+      "id": "main_rationale_343",
+      "label": "Resume or cancel a paused agent graph.      KEY CONCEPT \u2014 Resume after NodeInter",
+      "file_type": "rationale",
+      "source_file": "backend\\main.py",
+      "source_location": "L343"
+    },
+    {
+      "id": "backend_agents_graph_py",
+      "label": "graph.py",
+      "file_type": "code",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "graph_route_after_critic",
+      "label": "route_after_critic()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L70"
+    },
+    {
+      "id": "graph_route_after_reflector",
+      "label": "route_after_reflector()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L83"
+    },
+    {
+      "id": "graph_route_after_synthesizer",
+      "label": "route_after_synthesizer()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L97"
+    },
+    {
+      "id": "graph_build_graph",
+      "label": "build_graph()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L112"
+    },
+    {
+      "id": "graph_get_thread_config",
+      "label": "get_thread_config()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L188"
+    },
+    {
+      "id": "graph_create_initial_state",
+      "label": "create_initial_state()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L198"
+    },
+    {
+      "id": "graph_create_followup_state",
+      "label": "create_followup_state()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L230"
+    },
+    {
+      "id": "graph_rationale_71",
+      "label": "After Critic runs:     - If Critic set validation_passed=True (precondition fail",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L71"
+    },
+    {
+      "id": "graph_rationale_84",
+      "label": "After Reflector runs:     - If output is valid (or max retries reached) \u2192 Synthe",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L84"
+    },
+    {
+      "id": "graph_rationale_98",
+      "label": "After Synthesizer runs:     - If plan_steps is non-empty \u2192 ContinuePlan (advance",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L98"
+    },
+    {
+      "id": "graph_rationale_113",
+      "label": "Constructs and compiles the LangGraph StateGraph.     Returns (compiled_agent, m",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L113"
+    },
+    {
+      "id": "graph_rationale_189",
+      "label": "Returns the LangGraph config dict for a given session.     thread_id ties this i",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L189"
+    },
+    {
+      "id": "graph_rationale_204",
+      "label": "Factory function for the initial state dict on the FIRST message of a session.",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L204"
+    },
+    {
+      "id": "graph_rationale_231",
+      "label": "For subsequent messages in the SAME session, we only need to inject     the new",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L231"
+    },
+    {
+      "id": "backend_agents_state_py",
+      "label": "state.py",
+      "file_type": "code",
+      "source_file": "backend\\agents\\state.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "state_agentstate",
+      "label": "AgentState",
+      "file_type": "code",
+      "source_file": "backend\\agents\\state.py",
+      "source_location": "L23"
+    },
+    {
+      "id": "typeddict",
+      "label": "TypedDict",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "backend_agents_init_py",
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "backend\\agents\\__init__.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_agents_nodes_continue_plan_py",
+      "label": "continue_plan.py",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\continue_plan.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "continue_plan_continue_plan_node",
+      "label": "continue_plan_node()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\continue_plan.py",
+      "source_location": "L34"
+    },
+    {
+      "id": "continue_plan_rationale_35",
+      "label": "Advances to the next step in a multi-step plan.     Pops the first item from pla",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\nodes\\continue_plan.py",
+      "source_location": "L35"
+    },
+    {
+      "id": "backend_agents_nodes_critic_py",
+      "label": "critic.py",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\critic.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "critic_critic_node",
+      "label": "critic_node()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\critic.py",
+      "source_location": "L66"
+    },
+    {
+      "id": "critic_rationale_67",
+      "label": "Validates the Planner's decision before the Executor runs.     - Performs pre-fl",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\nodes\\critic.py",
+      "source_location": "L67"
+    },
+    {
+      "id": "backend_agents_nodes_executor_py",
+      "label": "executor.py",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\executor.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "executor_executor_node",
+      "label": "executor_node()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\executor.py",
+      "source_location": "L29"
+    },
+    {
+      "id": "executor_rationale_30",
+      "label": "Deterministic tool dispatcher.     Reads planned_action and tool_args from state",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\nodes\\executor.py",
+      "source_location": "L30"
+    },
+    {
+      "id": "backend_agents_nodes_planner_py",
+      "label": "planner.py",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "planner_plannerdecision",
+      "label": "PlannerDecision",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L46"
+    },
+    {
+      "id": "basemodel",
+      "label": "BaseModel",
+      "file_type": "code",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "planner_coerce_bool",
+      "label": "coerce_bool()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L93"
+    },
+    {
+      "id": "planner_build_system_prompt",
+      "label": "build_system_prompt()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L116"
+    },
+    {
+      "id": "planner_planner_node",
+      "label": "planner_node()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L179"
+    },
+    {
+      "id": "planner_rationale_180",
+      "label": "Reads conversation history + dataset context.     Returns a structured plan: whi",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L180"
+    },
+    {
+      "id": "backend_agents_nodes_reflector_py",
+      "label": "reflector.py",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "reflector_validate_model_output",
+      "label": "_validate_model_output()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L44"
+    },
+    {
+      "id": "reflector_validate_clean_output",
+      "label": "_validate_clean_output()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L69"
+    },
+    {
+      "id": "reflector_validate_predict_output",
+      "label": "_validate_predict_output()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L84"
+    },
+    {
+      "id": "reflector_validate_profile_output",
+      "label": "_validate_profile_output()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L98"
+    },
+    {
+      "id": "reflector_validate_compare_output",
+      "label": "_validate_compare_output()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L105"
+    },
+    {
+      "id": "reflector_reflector_node",
+      "label": "reflector_node()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L124"
+    },
+    {
+      "id": "reflector_rationale_45",
+      "label": "Validate AutoML tool output \u2014 metrics must be sane numbers.",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L45"
+    },
+    {
+      "id": "reflector_rationale_70",
+      "label": "Validate cleaning tool output \u2014 row/col counts must be positive integers.",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L70"
+    },
+    {
+      "id": "reflector_rationale_85",
+      "label": "Validate prediction output \u2014 must have a prediction value.",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L85"
+    },
+    {
+      "id": "reflector_rationale_99",
+      "label": "Validate profiling output \u2014 must have at least a summary.",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L99"
+    },
+    {
+      "id": "reflector_rationale_106",
+      "label": "Validate comparison output \u2014 must have both original and cleaned stats.",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L106"
+    },
+    {
+      "id": "reflector_rationale_125",
+      "label": "Validates the Executor's tool_output against deterministic rules.     Sets valid",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L125"
+    },
+    {
+      "id": "backend_agents_nodes_synthesizer_py",
+      "label": "synthesizer.py",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "synthesizer_format_model_result",
+      "label": "_format_model_result()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L62"
+    },
+    {
+      "id": "synthesizer_format_clean_result",
+      "label": "_format_clean_result()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L95"
+    },
+    {
+      "id": "synthesizer_format_predict_result",
+      "label": "_format_predict_result()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L118"
+    },
+    {
+      "id": "synthesizer_format_profile_result",
+      "label": "_format_profile_result()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L128"
+    },
+    {
+      "id": "synthesizer_format_compare_result",
+      "label": "_format_compare_result()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L145"
+    },
+    {
+      "id": "synthesizer_format_query_result",
+      "label": "_format_query_result()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L159"
+    },
+    {
+      "id": "synthesizer_synthesizer_node",
+      "label": "synthesizer_node()",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L200"
+    },
+    {
+      "id": "synthesizer_rationale_201",
+      "label": "Converts tool output into a human-readable markdown response.     Adds the AI re",
+      "file_type": "rationale",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L201"
+    },
+    {
+      "id": "backend_agents_nodes_init_py",
+      "label": "__init__.py",
+      "file_type": "code",
+      "source_file": "backend\\agents\\nodes\\__init__.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_core_session_manager_py",
+      "label": "session_manager.py",
+      "file_type": "code",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "session_manager_session",
+      "label": "Session",
+      "file_type": "code",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L5"
+    },
+    {
+      "id": "session_manager_session_init",
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L6"
+    },
+    {
+      "id": "session_manager_sessionmanager",
+      "label": "SessionManager",
+      "file_type": "code",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L20"
+    },
+    {
+      "id": "session_manager_sessionmanager_init",
+      "label": ".__init__()",
+      "file_type": "code",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L21"
+    },
+    {
+      "id": "session_manager_sessionmanager_create_session",
+      "label": ".create_session()",
+      "file_type": "code",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L24"
+    },
+    {
+      "id": "session_manager_sessionmanager_get_session",
+      "label": ".get_session()",
+      "file_type": "code",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L29"
+    },
+    {
+      "id": "session_manager_sessionmanager_delete_session",
+      "label": ".delete_session()",
+      "file_type": "code",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L34"
+    },
+    {
+      "id": "session_manager_sessionmanager_get_all_sessions",
+      "label": ".get_all_sessions()",
+      "file_type": "code",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L40"
+    },
+    {
+      "id": "backend_static_app_js",
+      "label": "app.js",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_setloading",
+      "label": "setLoading()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L52"
+    },
+    {
+      "id": "app_handleupload",
+      "label": "handleUpload()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L59"
+    },
+    {
+      "id": "app_loadanalysis",
+      "label": "loadAnalysis()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L89"
+    },
+    {
+      "id": "app_populatedashboard",
+      "label": "populateDashboard()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L109"
+    },
+    {
+      "id": "app_populatemodelingtab",
+      "label": "populateModelingTab()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L150"
+    },
+    {
+      "id": "app_fmt",
+      "label": "fmt()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L238"
+    },
+    {
+      "id": "app_fmtraw",
+      "label": "fmtRaw()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L245"
+    },
+    {
+      "id": "app_rendercharts",
+      "label": "renderCharts()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L252"
+    },
+    {
+      "id": "app_switchview",
+      "label": "switchView()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L350"
+    },
+    {
+      "id": "app_togglechat",
+      "label": "toggleChat()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L376"
+    },
+    {
+      "id": "app_appendusermessage",
+      "label": "_appendUserMessage()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L405"
+    },
+    {
+      "id": "app_appendaimessage",
+      "label": "_appendAIMessage()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L414"
+    },
+    {
+      "id": "app_showtyping",
+      "label": "_showTyping()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L423"
+    },
+    {
+      "id": "app_hidetyping",
+      "label": "_hideTyping()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L432"
+    },
+    {
+      "id": "app_beginaibubble",
+      "label": "_beginAIBubble()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L436"
+    },
+    {
+      "id": "app_appendtoken",
+      "label": "_appendToken()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L446"
+    },
+    {
+      "id": "app_finalizeaibubble",
+      "label": "_finalizeAIBubble()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L454"
+    },
+    {
+      "id": "app_setinputenabled",
+      "label": "_setInputEnabled()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L460"
+    },
+    {
+      "id": "app_showconfirmation",
+      "label": "_showConfirmation()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L473"
+    },
+    {
+      "id": "app_hideconfirmation",
+      "label": "_hideConfirmation()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L481"
+    },
+    {
+      "id": "app_confirmaction",
+      "label": "confirmAction()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L485"
+    },
+    {
+      "id": "app_processstream",
+      "label": "_processStream()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L515"
+    },
+    {
+      "id": "app_sendchatmessage",
+      "label": "sendChatMessage()",
+      "file_type": "code",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L574"
+    },
+    {
+      "id": "backend_tools_apply_cleaning_py",
+      "label": "apply_cleaning.py",
+      "file_type": "code",
+      "source_file": "backend\\tools\\apply_cleaning.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "apply_cleaning_apply_cleaning",
+      "label": "apply_cleaning()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\apply_cleaning.py",
+      "source_location": "L5"
+    },
+    {
+      "id": "apply_cleaning_rationale_6",
+      "label": "Apply cleaning actions in order. Returns (cleaned_df, cleaning_log).     Actions",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\apply_cleaning.py",
+      "source_location": "L6"
+    },
+    {
+      "id": "backend_tools_code_executor_py",
+      "label": "code_executor.py",
+      "file_type": "code",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "code_executor_is_safe",
+      "label": "_is_safe()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L70"
+    },
+    {
+      "id": "code_executor_build_context",
+      "label": "_build_context()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L93"
+    },
+    {
+      "id": "code_executor_generate_code",
+      "label": "generate_code()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L107"
+    },
+    {
+      "id": "code_executor_exec_with_timeout",
+      "label": "_exec_with_timeout()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L161"
+    },
+    {
+      "id": "code_executor_safe_exec",
+      "label": "safe_exec()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L181"
+    },
+    {
+      "id": "code_executor_run_query",
+      "label": "run_query()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L246"
+    },
+    {
+      "id": "code_executor_rationale_71",
+      "label": "Returns (True, '') if safe, (False, reason) if not.",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L71"
+    },
+    {
+      "id": "code_executor_rationale_94",
+      "label": "Give the LLM real column names, dtypes, and example values.",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L94"
+    },
+    {
+      "id": "code_executor_rationale_108",
+      "label": "Ask the LLM to write pandas code that answers the user's question.     Returns r",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L108"
+    },
+    {
+      "id": "code_executor_rationale_162",
+      "label": "Run exec() in a separate thread with a timeout.",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L162"
+    },
+    {
+      "id": "code_executor_rationale_182",
+      "label": "Execute code in a restricted sandbox.     df      = working/cleaned dataset",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L182"
+    },
+    {
+      "id": "code_executor_rationale_247",
+      "label": "Full pipeline: generate pandas code from NL query, then execute it safely.     d",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L247"
+    },
+    {
+      "id": "backend_tools_data_cleaning_py",
+      "label": "data_cleaning.py",
+      "file_type": "code",
+      "source_file": "backend\\tools\\data_cleaning.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "data_cleaning_is_zero_inflated",
+      "label": "_is_zero_inflated()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\data_cleaning.py",
+      "source_location": "L10"
+    },
+    {
+      "id": "data_cleaning_generate_cleaning_action_report",
+      "label": "generate_cleaning_action_report()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\data_cleaning.py",
+      "source_location": "L27"
+    },
+    {
+      "id": "data_cleaning_rationale_1",
+      "label": "data_cleaning.py \u2014 generates a dataset-agnostic ordered list of cleaning actions",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\data_cleaning.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "data_cleaning_rationale_11",
+      "label": "Detect zero-inflated numerical columns dynamically.     A column is zero-inflate",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\data_cleaning.py",
+      "source_location": "L11"
+    },
+    {
+      "id": "backend_tools_data_quality_py",
+      "label": "data_quality.py",
+      "file_type": "code",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "data_quality_detect_high_missing",
+      "label": "detect_high_missing()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L21"
+    },
+    {
+      "id": "data_quality_detect_id_columns",
+      "label": "detect_id_columns()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L39"
+    },
+    {
+      "id": "data_quality_detect_high_skew",
+      "label": "detect_high_skew()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L73"
+    },
+    {
+      "id": "data_quality_detect_low_variance",
+      "label": "detect_low_variance()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L87"
+    },
+    {
+      "id": "data_quality_detect_high_cardinality",
+      "label": "detect_high_cardinality()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L99"
+    },
+    {
+      "id": "data_quality_detect_candidate_targets",
+      "label": "detect_candidate_targets()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L110"
+    },
+    {
+      "id": "data_quality_analyze_data_quality",
+      "label": "analyze_data_quality()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L195"
+    },
+    {
+      "id": "data_quality_rationale_40",
+      "label": "A column is ID-like only if:       1. Every value is unique (unique == num_rows",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L40"
+    },
+    {
+      "id": "data_quality_rationale_88",
+      "label": "Flag only truly constant columns (unique == 1). Low ratio \u2260 useless.",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L88"
+    },
+    {
+      "id": "data_quality_rationale_111",
+      "label": "Smart-filter target candidates to 3-5 meaningful columns.     Regression: conti",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L111"
+    },
+    {
+      "id": "backend_tools_eda_py",
+      "label": "eda.py",
+      "file_type": "code",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "eda_select_columns",
+      "label": "select_columns()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L19"
+    },
+    {
+      "id": "eda_make_histogram",
+      "label": "_make_histogram()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L148"
+    },
+    {
+      "id": "eda_generate_univariate_analysis",
+      "label": "generate_univariate_analysis()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L188"
+    },
+    {
+      "id": "eda_generate_bivariate_analysis",
+      "label": "generate_bivariate_analysis()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L211"
+    },
+    {
+      "id": "eda_generate_correlation",
+      "label": "generate_correlation()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L241"
+    },
+    {
+      "id": "eda_generate_target_analysis",
+      "label": "generate_target_analysis()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L258"
+    },
+    {
+      "id": "eda_run_full_analysis",
+      "label": "run_full_analysis()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L329"
+    },
+    {
+      "id": "eda_rationale_1",
+      "label": "eda.py \u2502 \u251c\u2500\u2500 select_columns(metadata) \u251c\u2500\u2500 generate_univariate_analysis(df) \u251c",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "eda_rationale_149",
+      "label": "Compute bins with numpy, render with go.Bar \u2014 lowest-level, guaranteed rendering",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L149"
+    },
+    {
+      "id": "backend_tools_insights_py",
+      "label": "insights.py",
+      "file_type": "code",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "insights_generate_recommendations",
+      "label": "generate_recommendations()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L7"
+    },
+    {
+      "id": "insights_generate_general_insights",
+      "label": "generate_general_insights()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L73"
+    },
+    {
+      "id": "insights_generate_correlation_insights",
+      "label": "generate_correlation_insights()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L144"
+    },
+    {
+      "id": "insights_generate_key_findings",
+      "label": "generate_key_findings()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L181"
+    },
+    {
+      "id": "insights_generate_correlation_ranking",
+      "label": "generate_correlation_ranking()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L233"
+    },
+    {
+      "id": "insights_generate_target_insights",
+      "label": "generate_target_insights()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L259"
+    },
+    {
+      "id": "insights_generate_all_insights",
+      "label": "generate_all_insights()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L328"
+    },
+    {
+      "id": "backend_tools_llm_insights_py",
+      "label": "llm_insights.py",
+      "file_type": "code",
+      "source_file": "backend\\tools\\llm_insights.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "llm_insights_build_compact_context",
+      "label": "build_compact_context()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\llm_insights.py",
+      "source_location": "L15"
+    },
+    {
+      "id": "llm_insights_get_llm_insights",
+      "label": "get_llm_insights()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\llm_insights.py",
+      "source_location": "L43"
+    },
+    {
+      "id": "llm_insights_get_llm_target_selection",
+      "label": "get_llm_target_selection()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\llm_insights.py",
+      "source_location": "L73"
+    },
+    {
+      "id": "llm_insights_rationale_74",
+      "label": "Phase 2: Ask LLM to pick the most appropriate target column from a     short lis",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\llm_insights.py",
+      "source_location": "L74"
+    },
+    {
+      "id": "backend_tools_modeling_py",
+      "label": "modeling.py",
+      "file_type": "code",
+      "source_file": "backend\\tools\\modeling.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "modeling_run_modeling",
+      "label": "run_modeling()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\modeling.py",
+      "source_location": "L18"
+    },
+    {
+      "id": "modeling_rationale_19",
+      "label": "Run baseline model, return feature importance + metrics.     No hardcoded assump",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\modeling.py",
+      "source_location": "L19"
+    },
+    {
+      "id": "backend_tools_proactive_analyzer_py",
+      "label": "proactive_analyzer.py",
+      "file_type": "code",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "proactive_analyzer_build_queries",
+      "label": "_build_queries()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L43"
+    },
+    {
+      "id": "proactive_analyzer_collect_proactive_data",
+      "label": "collect_proactive_data()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L103"
+    },
+    {
+      "id": "proactive_analyzer_build_synthesis_prompt",
+      "label": "_build_synthesis_prompt()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L127"
+    },
+    {
+      "id": "proactive_analyzer_generate_proactive_insights",
+      "label": "generate_proactive_insights()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L175"
+    },
+    {
+      "id": "proactive_analyzer_rationale_44",
+      "label": "Returns a list of (label, query_string) pairs tailored to this dataset.     Each",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L44"
+    },
+    {
+      "id": "proactive_analyzer_rationale_104",
+      "label": "Executes all adaptive queries against the session's raw dataset.     Returns a d",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L104"
+    },
+    {
+      "id": "proactive_analyzer_rationale_176",
+      "label": "Synchronous entry point: collect query results \u2192 synthesize \u2192 return markdown st",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L176"
+    },
+    {
+      "id": "backend_tools_profiling_py",
+      "label": "profiling.py",
+      "file_type": "code",
+      "source_file": "backend\\tools\\profiling.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "profiling_extract_metadata",
+      "label": "extract_metadata()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\profiling.py",
+      "source_location": "L55"
+    },
+    {
+      "id": "profiling_rationale_1",
+      "label": "This module is used to extract metadata from a pandas DataFrame.  metadata = {",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\profiling.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "backend_tools_wrapper_py",
+      "label": "wrapper.py",
+      "file_type": "code",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "wrapper_profile_dataset",
+      "label": "profile_dataset()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L42"
+    },
+    {
+      "id": "wrapper_clean_dataset",
+      "label": "clean_dataset()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L72"
+    },
+    {
+      "id": "wrapper_run_automl_tool",
+      "label": "run_automl_tool()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L111"
+    },
+    {
+      "id": "wrapper_predict_instance",
+      "label": "predict_instance()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L153"
+    },
+    {
+      "id": "wrapper_compare_pre_post_clean",
+      "label": "compare_pre_post_clean()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L219"
+    },
+    {
+      "id": "wrapper_execute_query_tool",
+      "label": "execute_query_tool()",
+      "file_type": "code",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L254"
+    },
+    {
+      "id": "wrapper_rationale_43",
+      "label": "Run full EDA profiling on the uploaded dataset.     Generates statistical summar",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L43"
+    },
+    {
+      "id": "wrapper_rationale_73",
+      "label": "Auto-clean the uploaded dataset.     Drops ID columns, encodes categorical varia",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L73"
+    },
+    {
+      "id": "wrapper_rationale_112",
+      "label": "Train an AutoML VotingEnsemble on the working dataset using 5-fold CV.     Train",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L112"
+    },
+    {
+      "id": "wrapper_rationale_154",
+      "label": "Run a single prediction through the trained model.     Provide feature_values as",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L154"
+    },
+    {
+      "id": "wrapper_rationale_220",
+      "label": "Compare dataset statistics before and after cleaning.     Shows column count, mi",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L220"
+    },
+    {
+      "id": "wrapper_rationale_255",
+      "label": "Answer any data question by generating and executing pandas code on the     live",
+      "file_type": "rationale",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L255"
+    },
+    {
+      "id": "frontend_app_py",
+      "label": "app.py",
+      "file_type": "code",
+      "source_file": "frontend\\app.py",
+      "source_location": "L1"
+    }
+  ],
+  "edges": [
+    {
+      "source": "backend_main_py",
+      "target": "fastapi",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "fastapi_staticfiles",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "fastapi_templating",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "fastapi_responses",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "pandas",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "io",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "os",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "json",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "fastapi_middleware_cors",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "core_session_manager",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "tools_profiling",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "tools_data_quality",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "tools_eda",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "tools_data_cleaning",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "tools_apply_cleaning",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "tools_modeling",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "agents_graph",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "main_home",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "main_health",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "main_create_session",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "main_get_sessions",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "main_upload_dataset",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "main_get_full_analysis",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L102",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "main_cleaning",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L130",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "main_modeling",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L168",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "main_build_dataset_metadata",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L233",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "main_sse",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L247",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "main_chat",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L253",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_main_py",
+      "target": "main_chat_confirm",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L342",
+      "weight": 1.0
+    },
+    {
+      "source": "main_chat",
+      "target": "main_build_dataset_metadata",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L272",
+      "weight": 1.0
+    },
+    {
+      "source": "main_rationale_234",
+      "target": "main_build_dataset_metadata",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L234",
+      "weight": 1.0
+    },
+    {
+      "source": "main_rationale_248",
+      "target": "main_sse",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L248",
+      "weight": 1.0
+    },
+    {
+      "source": "main_rationale_254",
+      "target": "main_chat",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L254",
+      "weight": 1.0
+    },
+    {
+      "source": "main_rationale_343",
+      "target": "main_chat_confirm",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\main.py",
+      "source_location": "L343",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "typing",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "langchain_core_messages",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "langgraph_graph",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "langgraph_checkpoint_memory",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "agents_state",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "agents_nodes_planner",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "agents_nodes_critic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "agents_nodes_executor",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "agents_nodes_reflector",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "agents_nodes_synthesizer",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "agents_nodes_continue_plan",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "graph_route_after_critic",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "graph_route_after_reflector",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "graph_route_after_synthesizer",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "graph_build_graph",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "graph_get_thread_config",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L188",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "graph_create_initial_state",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L198",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_graph_py",
+      "target": "graph_create_followup_state",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L230",
+      "weight": 1.0
+    },
+    {
+      "source": "graph_rationale_71",
+      "target": "graph_route_after_critic",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L71",
+      "weight": 1.0
+    },
+    {
+      "source": "graph_rationale_84",
+      "target": "graph_route_after_reflector",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "graph_rationale_98",
+      "target": "graph_route_after_synthesizer",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L98",
+      "weight": 1.0
+    },
+    {
+      "source": "graph_rationale_113",
+      "target": "graph_build_graph",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "graph_rationale_189",
+      "target": "graph_get_thread_config",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L189",
+      "weight": 1.0
+    },
+    {
+      "source": "graph_rationale_204",
+      "target": "graph_create_initial_state",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L204",
+      "weight": 1.0
+    },
+    {
+      "source": "graph_rationale_231",
+      "target": "graph_create_followup_state",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L231",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_state_py",
+      "target": "typing",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\state.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_state_py",
+      "target": "typing_extensions",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\state.py",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_state_py",
+      "target": "langgraph_graph_message",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\state.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_state_py",
+      "target": "langchain_core_messages",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\state.py",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_state_py",
+      "target": "state_agentstate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\state.py",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "state_agentstate",
+      "target": "typeddict",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\state.py",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_continue_plan_py",
+      "target": "agents_state",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\continue_plan.py",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_continue_plan_py",
+      "target": "continue_plan_continue_plan_node",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\continue_plan.py",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "continue_plan_rationale_35",
+      "target": "continue_plan_continue_plan_node",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\continue_plan.py",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_critic_py",
+      "target": "langgraph_errors",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\critic.py",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_critic_py",
+      "target": "agents_state",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\critic.py",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_critic_py",
+      "target": "core_session_manager",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\critic.py",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_critic_py",
+      "target": "critic_critic_node",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\critic.py",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "critic_rationale_67",
+      "target": "critic_critic_node",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\critic.py",
+      "source_location": "L67",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_executor_py",
+      "target": "agents_state",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\executor.py",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_executor_py",
+      "target": "tools_wrapper",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\executor.py",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_executor_py",
+      "target": "executor_executor_node",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\executor.py",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "executor_rationale_30",
+      "target": "executor_executor_node",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\executor.py",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_planner_py",
+      "target": "os",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_planner_py",
+      "target": "json",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_planner_py",
+      "target": "dotenv",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_planner_py",
+      "target": "typing",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_planner_py",
+      "target": "pydantic",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_planner_py",
+      "target": "langchain_core_messages",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_planner_py",
+      "target": "langchain_groq",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_planner_py",
+      "target": "agents_state",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_planner_py",
+      "target": "planner_plannerdecision",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "planner_plannerdecision",
+      "target": "basemodel",
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_planner_py",
+      "target": "planner_coerce_bool",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_planner_py",
+      "target": "planner_build_system_prompt",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L116",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_planner_py",
+      "target": "planner_planner_node",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L179",
+      "weight": 1.0
+    },
+    {
+      "source": "planner_planner_node",
+      "target": "planner_build_system_prompt",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L186",
+      "weight": 1.0
+    },
+    {
+      "source": "planner_rationale_180",
+      "target": "planner_planner_node",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L180",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_reflector_py",
+      "target": "agents_state",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_reflector_py",
+      "target": "reflector_validate_model_output",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_reflector_py",
+      "target": "reflector_validate_clean_output",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L69",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_reflector_py",
+      "target": "reflector_validate_predict_output",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_reflector_py",
+      "target": "reflector_validate_profile_output",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L98",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_reflector_py",
+      "target": "reflector_validate_compare_output",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_reflector_py",
+      "target": "reflector_reflector_node",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L124",
+      "weight": 1.0
+    },
+    {
+      "source": "reflector_rationale_45",
+      "target": "reflector_validate_model_output",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "reflector_rationale_70",
+      "target": "reflector_validate_clean_output",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "reflector_rationale_85",
+      "target": "reflector_validate_predict_output",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L85",
+      "weight": 1.0
+    },
+    {
+      "source": "reflector_rationale_99",
+      "target": "reflector_validate_profile_output",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "reflector_rationale_106",
+      "target": "reflector_validate_compare_output",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L106",
+      "weight": 1.0
+    },
+    {
+      "source": "reflector_rationale_125",
+      "target": "reflector_reflector_node",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L125",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_synthesizer_py",
+      "target": "os",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_synthesizer_py",
+      "target": "json",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_synthesizer_py",
+      "target": "langchain_core_messages",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_synthesizer_py",
+      "target": "langchain_core_output_parsers",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_synthesizer_py",
+      "target": "langchain_core_prompts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_synthesizer_py",
+      "target": "langchain_groq",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_synthesizer_py",
+      "target": "dotenv",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_synthesizer_py",
+      "target": "agents_state",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_synthesizer_py",
+      "target": "synthesizer_format_model_result",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_synthesizer_py",
+      "target": "synthesizer_format_clean_result",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L95",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_synthesizer_py",
+      "target": "synthesizer_format_predict_result",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L118",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_synthesizer_py",
+      "target": "synthesizer_format_profile_result",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L128",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_synthesizer_py",
+      "target": "synthesizer_format_compare_result",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L145",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_synthesizer_py",
+      "target": "synthesizer_format_query_result",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L159",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_agents_nodes_synthesizer_py",
+      "target": "synthesizer_synthesizer_node",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L200",
+      "weight": 1.0
+    },
+    {
+      "source": "synthesizer_rationale_201",
+      "target": "synthesizer_synthesizer_node",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L201",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_core_session_manager_py",
+      "target": "uuid",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_core_session_manager_py",
+      "target": "datetime",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_core_session_manager_py",
+      "target": "fastapi",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_core_session_manager_py",
+      "target": "session_manager_session",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "session_manager_session",
+      "target": "session_manager_session_init",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_core_session_manager_py",
+      "target": "session_manager_sessionmanager",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "session_manager_sessionmanager",
+      "target": "session_manager_sessionmanager_init",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "session_manager_sessionmanager",
+      "target": "session_manager_sessionmanager_create_session",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "session_manager_sessionmanager",
+      "target": "session_manager_sessionmanager_get_session",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "session_manager_sessionmanager",
+      "target": "session_manager_sessionmanager_delete_session",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "session_manager_sessionmanager",
+      "target": "session_manager_sessionmanager_get_all_sessions",
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "session_manager_sessionmanager_create_session",
+      "target": "session_manager_session",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\core\\session_manager.py",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_setloading",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_handleupload",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L59",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_loadanalysis",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L89",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_populatedashboard",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L109",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_populatemodelingtab",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L150",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_fmt",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L238",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_fmtraw",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L245",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_rendercharts",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L252",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_switchview",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L350",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_togglechat",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L376",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_appendusermessage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L405",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_appendaimessage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L414",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_showtyping",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L423",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_hidetyping",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L432",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_beginaibubble",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L436",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_appendtoken",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L446",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_finalizeaibubble",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L454",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_setinputenabled",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L460",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_showconfirmation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L473",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_hideconfirmation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L481",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_confirmaction",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L485",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_processstream",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L515",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_static_app_js",
+      "target": "app_sendchatmessage",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L574",
+      "weight": 1.0
+    },
+    {
+      "source": "app_setloading",
+      "target": "app_switchview",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "app_handleupload",
+      "target": "app_setloading",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "app_handleupload",
+      "target": "app_loadanalysis",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "app_handleupload",
+      "target": "app_switchview",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "app_loadanalysis",
+      "target": "app_setloading",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L90",
+      "weight": 1.0
+    },
+    {
+      "source": "app_loadanalysis",
+      "target": "app_populatedashboard",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L96",
+      "weight": 1.0
+    },
+    {
+      "source": "app_loadanalysis",
+      "target": "app_switchview",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
+      "source": "app_populatedashboard",
+      "target": "app_rendercharts",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L146",
+      "weight": 1.0
+    },
+    {
+      "source": "app_populatemodelingtab",
+      "target": "app_fmt",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L160",
+      "weight": 1.0
+    },
+    {
+      "source": "app_populatemodelingtab",
+      "target": "app_fmtraw",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L171",
+      "weight": 1.0
+    },
+    {
+      "source": "app_togglechat",
+      "target": "app_appendaimessage",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L388",
+      "weight": 1.0
+    },
+    {
+      "source": "app_beginaibubble",
+      "target": "app_hidetyping",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L437",
+      "weight": 1.0
+    },
+    {
+      "source": "app_confirmaction",
+      "target": "app_hideconfirmation",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L486",
+      "weight": 1.0
+    },
+    {
+      "source": "app_confirmaction",
+      "target": "app_appendaimessage",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L489",
+      "weight": 1.0
+    },
+    {
+      "source": "app_confirmaction",
+      "target": "app_setinputenabled",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L490",
+      "weight": 1.0
+    },
+    {
+      "source": "app_confirmaction",
+      "target": "app_showtyping",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L495",
+      "weight": 1.0
+    },
+    {
+      "source": "app_confirmaction",
+      "target": "app_processstream",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L504",
+      "weight": 1.0
+    },
+    {
+      "source": "app_confirmaction",
+      "target": "app_hidetyping",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L506",
+      "weight": 1.0
+    },
+    {
+      "source": "app_confirmaction",
+      "target": "app_finalizeaibubble",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L508",
+      "weight": 1.0
+    },
+    {
+      "source": "app_processstream",
+      "target": "app_beginaibubble",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L540",
+      "weight": 1.0
+    },
+    {
+      "source": "app_processstream",
+      "target": "app_appendtoken",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L541",
+      "weight": 1.0
+    },
+    {
+      "source": "app_processstream",
+      "target": "app_hidetyping",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L544",
+      "weight": 1.0
+    },
+    {
+      "source": "app_processstream",
+      "target": "app_showconfirmation",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L545",
+      "weight": 1.0
+    },
+    {
+      "source": "app_processstream",
+      "target": "app_finalizeaibubble",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L546",
+      "weight": 1.0
+    },
+    {
+      "source": "app_processstream",
+      "target": "app_appendaimessage",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L566",
+      "weight": 1.0
+    },
+    {
+      "source": "app_sendchatmessage",
+      "target": "app_appendaimessage",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L580",
+      "weight": 1.0
+    },
+    {
+      "source": "app_sendchatmessage",
+      "target": "app_appendusermessage",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L589",
+      "weight": 1.0
+    },
+    {
+      "source": "app_sendchatmessage",
+      "target": "app_setinputenabled",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L590",
+      "weight": 1.0
+    },
+    {
+      "source": "app_sendchatmessage",
+      "target": "app_showtyping",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L591",
+      "weight": 1.0
+    },
+    {
+      "source": "app_sendchatmessage",
+      "target": "app_processstream",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L600",
+      "weight": 1.0
+    },
+    {
+      "source": "app_sendchatmessage",
+      "target": "app_hidetyping",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L602",
+      "weight": 1.0
+    },
+    {
+      "source": "app_sendchatmessage",
+      "target": "app_finalizeaibubble",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\static\\app.js",
+      "source_location": "L604",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_apply_cleaning_py",
+      "target": "pandas",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\apply_cleaning.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_apply_cleaning_py",
+      "target": "numpy",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\apply_cleaning.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_apply_cleaning_py",
+      "target": "apply_cleaning_apply_cleaning",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\apply_cleaning.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "apply_cleaning_rationale_6",
+      "target": "apply_cleaning_apply_cleaning",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\apply_cleaning.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_code_executor_py",
+      "target": "os",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_code_executor_py",
+      "target": "io",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_code_executor_py",
+      "target": "re",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_code_executor_py",
+      "target": "contextlib",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_code_executor_py",
+      "target": "threading",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_code_executor_py",
+      "target": "typing",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_code_executor_py",
+      "target": "pandas",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_code_executor_py",
+      "target": "numpy",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_code_executor_py",
+      "target": "langchain_groq",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_code_executor_py",
+      "target": "dotenv",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_code_executor_py",
+      "target": "code_executor_is_safe",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_code_executor_py",
+      "target": "code_executor_build_context",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_code_executor_py",
+      "target": "code_executor_generate_code",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L107",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_code_executor_py",
+      "target": "code_executor_exec_with_timeout",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L161",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_code_executor_py",
+      "target": "code_executor_safe_exec",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L181",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_code_executor_py",
+      "target": "code_executor_run_query",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L246",
+      "weight": 1.0
+    },
+    {
+      "source": "code_executor_generate_code",
+      "target": "code_executor_build_context",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
+      "source": "code_executor_safe_exec",
+      "target": "code_executor_is_safe",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L187",
+      "weight": 1.0
+    },
+    {
+      "source": "code_executor_safe_exec",
+      "target": "code_executor_exec_with_timeout",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L207",
+      "weight": 1.0
+    },
+    {
+      "source": "code_executor_run_query",
+      "target": "code_executor_generate_code",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L253",
+      "weight": 1.0
+    },
+    {
+      "source": "code_executor_run_query",
+      "target": "code_executor_safe_exec",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L257",
+      "weight": 1.0
+    },
+    {
+      "source": "code_executor_rationale_71",
+      "target": "code_executor_is_safe",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L71",
+      "weight": 1.0
+    },
+    {
+      "source": "code_executor_rationale_94",
+      "target": "code_executor_build_context",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L94",
+      "weight": 1.0
+    },
+    {
+      "source": "code_executor_rationale_108",
+      "target": "code_executor_generate_code",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L108",
+      "weight": 1.0
+    },
+    {
+      "source": "code_executor_rationale_162",
+      "target": "code_executor_exec_with_timeout",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L162",
+      "weight": 1.0
+    },
+    {
+      "source": "code_executor_rationale_182",
+      "target": "code_executor_safe_exec",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L182",
+      "weight": 1.0
+    },
+    {
+      "source": "code_executor_rationale_247",
+      "target": "code_executor_run_query",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\code_executor.py",
+      "source_location": "L247",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_data_cleaning_py",
+      "target": "data_cleaning_is_zero_inflated",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_cleaning.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_data_cleaning_py",
+      "target": "data_cleaning_generate_cleaning_action_report",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_cleaning.py",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "data_cleaning_generate_cleaning_action_report",
+      "target": "data_cleaning_is_zero_inflated",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_cleaning.py",
+      "source_location": "L102",
+      "weight": 1.0
+    },
+    {
+      "source": "data_cleaning_rationale_1",
+      "target": "backend_tools_data_cleaning_py",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_cleaning.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "data_cleaning_rationale_11",
+      "target": "data_cleaning_is_zero_inflated",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_cleaning.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_data_quality_py",
+      "target": "pandas",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_data_quality_py",
+      "target": "numpy",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_data_quality_py",
+      "target": "re",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_data_quality_py",
+      "target": "data_quality_detect_high_missing",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_data_quality_py",
+      "target": "data_quality_detect_id_columns",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_data_quality_py",
+      "target": "data_quality_detect_high_skew",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_data_quality_py",
+      "target": "data_quality_detect_low_variance",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_data_quality_py",
+      "target": "data_quality_detect_high_cardinality",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L99",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_data_quality_py",
+      "target": "data_quality_detect_candidate_targets",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L110",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_data_quality_py",
+      "target": "data_quality_analyze_data_quality",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L195",
+      "weight": 1.0
+    },
+    {
+      "source": "data_quality_analyze_data_quality",
+      "target": "data_quality_detect_high_missing",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L196",
+      "weight": 1.0
+    },
+    {
+      "source": "data_quality_analyze_data_quality",
+      "target": "data_quality_detect_id_columns",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L197",
+      "weight": 1.0
+    },
+    {
+      "source": "data_quality_analyze_data_quality",
+      "target": "data_quality_detect_high_skew",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L198",
+      "weight": 1.0
+    },
+    {
+      "source": "data_quality_analyze_data_quality",
+      "target": "data_quality_detect_low_variance",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L199",
+      "weight": 1.0
+    },
+    {
+      "source": "data_quality_analyze_data_quality",
+      "target": "data_quality_detect_high_cardinality",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L200",
+      "weight": 1.0
+    },
+    {
+      "source": "data_quality_analyze_data_quality",
+      "target": "data_quality_detect_candidate_targets",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L201",
+      "weight": 1.0
+    },
+    {
+      "source": "data_quality_rationale_40",
+      "target": "data_quality_detect_id_columns",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "data_quality_rationale_88",
+      "target": "data_quality_detect_low_variance",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L88",
+      "weight": 1.0
+    },
+    {
+      "source": "data_quality_rationale_111",
+      "target": "data_quality_detect_candidate_targets",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\data_quality.py",
+      "source_location": "L111",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_eda_py",
+      "target": "numpy",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_eda_py",
+      "target": "plotly_express",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_eda_py",
+      "target": "pandas",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_eda_py",
+      "target": "tools_insights",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_eda_py",
+      "target": "tools_llm_insights",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_eda_py",
+      "target": "eda_select_columns",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_eda_py",
+      "target": "eda_make_histogram",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L148",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_eda_py",
+      "target": "eda_generate_univariate_analysis",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L188",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_eda_py",
+      "target": "eda_generate_bivariate_analysis",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L211",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_eda_py",
+      "target": "eda_generate_correlation",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L241",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_eda_py",
+      "target": "eda_generate_target_analysis",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L258",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_eda_py",
+      "target": "eda_run_full_analysis",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L329",
+      "weight": 1.0
+    },
+    {
+      "source": "eda_generate_univariate_analysis",
+      "target": "eda_make_histogram",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L195",
+      "weight": 1.0
+    },
+    {
+      "source": "eda_run_full_analysis",
+      "target": "eda_select_columns",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L331",
+      "weight": 1.0
+    },
+    {
+      "source": "eda_run_full_analysis",
+      "target": "eda_generate_univariate_analysis",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L334",
+      "weight": 1.0
+    },
+    {
+      "source": "eda_run_full_analysis",
+      "target": "eda_generate_bivariate_analysis",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L335",
+      "weight": 1.0
+    },
+    {
+      "source": "eda_run_full_analysis",
+      "target": "eda_generate_correlation",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L336",
+      "weight": 1.0
+    },
+    {
+      "source": "eda_run_full_analysis",
+      "target": "eda_generate_target_analysis",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L337",
+      "weight": 1.0
+    },
+    {
+      "source": "eda_rationale_1",
+      "target": "backend_tools_eda_py",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "eda_rationale_149",
+      "target": "eda_make_histogram",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L149",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_insights_py",
+      "target": "tools_llm_insights",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_insights_py",
+      "target": "pandas",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_insights_py",
+      "target": "insights_generate_recommendations",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_insights_py",
+      "target": "insights_generate_general_insights",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_insights_py",
+      "target": "insights_generate_correlation_insights",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L144",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_insights_py",
+      "target": "insights_generate_key_findings",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L181",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_insights_py",
+      "target": "insights_generate_correlation_ranking",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L233",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_insights_py",
+      "target": "insights_generate_target_insights",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L259",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_insights_py",
+      "target": "insights_generate_all_insights",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L328",
+      "weight": 1.0
+    },
+    {
+      "source": "insights_generate_all_insights",
+      "target": "insights_generate_general_insights",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L330",
+      "weight": 1.0
+    },
+    {
+      "source": "insights_generate_all_insights",
+      "target": "insights_generate_key_findings",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L331",
+      "weight": 1.0
+    },
+    {
+      "source": "insights_generate_all_insights",
+      "target": "insights_generate_correlation_insights",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L332",
+      "weight": 1.0
+    },
+    {
+      "source": "insights_generate_all_insights",
+      "target": "insights_generate_target_insights",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L333",
+      "weight": 1.0
+    },
+    {
+      "source": "insights_generate_all_insights",
+      "target": "insights_generate_correlation_ranking",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L339",
+      "weight": 1.0
+    },
+    {
+      "source": "insights_generate_all_insights",
+      "target": "insights_generate_recommendations",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L345",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_llm_insights_py",
+      "target": "os",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\llm_insights.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_llm_insights_py",
+      "target": "json",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\llm_insights.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_llm_insights_py",
+      "target": "dotenv",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\llm_insights.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_llm_insights_py",
+      "target": "langchain_groq",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\llm_insights.py",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_llm_insights_py",
+      "target": "langchain_core_output_parsers",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\llm_insights.py",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_llm_insights_py",
+      "target": "langchain_core_prompts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\llm_insights.py",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_llm_insights_py",
+      "target": "llm_insights_build_compact_context",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\llm_insights.py",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_llm_insights_py",
+      "target": "llm_insights_get_llm_insights",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\llm_insights.py",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_llm_insights_py",
+      "target": "llm_insights_get_llm_target_selection",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\llm_insights.py",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "llm_insights_get_llm_insights",
+      "target": "llm_insights_build_compact_context",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\llm_insights.py",
+      "source_location": "L68",
+      "weight": 1.0
+    },
+    {
+      "source": "llm_insights_rationale_74",
+      "target": "llm_insights_get_llm_target_selection",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\llm_insights.py",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_modeling_py",
+      "target": "pandas",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\modeling.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_modeling_py",
+      "target": "numpy",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\modeling.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_modeling_py",
+      "target": "sklearn_model_selection",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\modeling.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_modeling_py",
+      "target": "sklearn_linear_model",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\modeling.py",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_modeling_py",
+      "target": "sklearn_ensemble",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\modeling.py",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_modeling_py",
+      "target": "sklearn_preprocessing",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\modeling.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_modeling_py",
+      "target": "sklearn_metrics",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\modeling.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_modeling_py",
+      "target": "modeling_run_modeling",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\modeling.py",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "modeling_rationale_19",
+      "target": "modeling_run_modeling",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\modeling.py",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_proactive_analyzer_py",
+      "target": "os",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_proactive_analyzer_py",
+      "target": "langchain_groq",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_proactive_analyzer_py",
+      "target": "langchain_core_messages",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_proactive_analyzer_py",
+      "target": "langchain_core_output_parsers",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_proactive_analyzer_py",
+      "target": "dotenv",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_proactive_analyzer_py",
+      "target": "tools_code_executor",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_proactive_analyzer_py",
+      "target": "proactive_analyzer_build_queries",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_proactive_analyzer_py",
+      "target": "proactive_analyzer_collect_proactive_data",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L103",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_proactive_analyzer_py",
+      "target": "proactive_analyzer_build_synthesis_prompt",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L127",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_proactive_analyzer_py",
+      "target": "proactive_analyzer_generate_proactive_insights",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L175",
+      "weight": 1.0
+    },
+    {
+      "source": "proactive_analyzer_collect_proactive_data",
+      "target": "proactive_analyzer_build_queries",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L114",
+      "weight": 1.0
+    },
+    {
+      "source": "proactive_analyzer_generate_proactive_insights",
+      "target": "proactive_analyzer_collect_proactive_data",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L181",
+      "weight": 1.0
+    },
+    {
+      "source": "proactive_analyzer_generate_proactive_insights",
+      "target": "proactive_analyzer_build_synthesis_prompt",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L186",
+      "weight": 1.0
+    },
+    {
+      "source": "proactive_analyzer_rationale_44",
+      "target": "proactive_analyzer_build_queries",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "proactive_analyzer_rationale_104",
+      "target": "proactive_analyzer_collect_proactive_data",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "proactive_analyzer_rationale_176",
+      "target": "proactive_analyzer_generate_proactive_insights",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L176",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_profiling_py",
+      "target": "pandas",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\profiling.py",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_profiling_py",
+      "target": "numpy",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\profiling.py",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_profiling_py",
+      "target": "profiling_extract_metadata",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\profiling.py",
+      "source_location": "L55",
+      "weight": 1.0
+    },
+    {
+      "source": "profiling_rationale_1",
+      "target": "backend_tools_profiling_py",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\profiling.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_wrapper_py",
+      "target": "numpy",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_wrapper_py",
+      "target": "pandas",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_wrapper_py",
+      "target": "langchain_core_tools",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_wrapper_py",
+      "target": "core_session_manager",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_wrapper_py",
+      "target": "tools_profiling",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_wrapper_py",
+      "target": "tools_data_quality",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_wrapper_py",
+      "target": "tools_eda",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L32",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_wrapper_py",
+      "target": "tools_data_cleaning",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_wrapper_py",
+      "target": "tools_apply_cleaning",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_wrapper_py",
+      "target": "tools_modeling",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_wrapper_py",
+      "target": "tools_code_executor",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_wrapper_py",
+      "target": "wrapper_profile_dataset",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_wrapper_py",
+      "target": "wrapper_clean_dataset",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L72",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_wrapper_py",
+      "target": "wrapper_run_automl_tool",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L111",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_wrapper_py",
+      "target": "wrapper_predict_instance",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L153",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_wrapper_py",
+      "target": "wrapper_compare_pre_post_clean",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L219",
+      "weight": 1.0
+    },
+    {
+      "source": "backend_tools_wrapper_py",
+      "target": "wrapper_execute_query_tool",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L254",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_rationale_43",
+      "target": "wrapper_profile_dataset",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_rationale_73",
+      "target": "wrapper_clean_dataset",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_rationale_112",
+      "target": "wrapper_run_automl_tool",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_rationale_154",
+      "target": "wrapper_predict_instance",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L154",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_rationale_220",
+      "target": "wrapper_compare_pre_post_clean",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L220",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_rationale_255",
+      "target": "wrapper_execute_query_tool",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L255",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_app_py",
+      "target": "streamlit",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\app.py",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_app_py",
+      "target": "requests",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\app.py",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_app_py",
+      "target": "plotly_io",
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend\\app.py",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "main_rationale_234",
+      "target": "session_manager_sessionmanager",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\main.py",
+      "source_location": "L10",
+      "weight": 0.8
+    },
+    {
+      "source": "main_rationale_248",
+      "target": "session_manager_sessionmanager",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\main.py",
+      "source_location": "L10",
+      "weight": 0.8
+    },
+    {
+      "source": "main_rationale_254",
+      "target": "session_manager_sessionmanager",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\main.py",
+      "source_location": "L10",
+      "weight": 0.8
+    },
+    {
+      "source": "main_rationale_343",
+      "target": "session_manager_sessionmanager",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\main.py",
+      "source_location": "L10",
+      "weight": 0.8
+    },
+    {
+      "source": "graph_rationale_71",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L56",
+      "weight": 0.8
+    },
+    {
+      "source": "graph_rationale_84",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L56",
+      "weight": 0.8
+    },
+    {
+      "source": "graph_rationale_98",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L56",
+      "weight": 0.8
+    },
+    {
+      "source": "graph_rationale_113",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L56",
+      "weight": 0.8
+    },
+    {
+      "source": "graph_rationale_189",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L56",
+      "weight": 0.8
+    },
+    {
+      "source": "graph_rationale_204",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L56",
+      "weight": 0.8
+    },
+    {
+      "source": "graph_rationale_231",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\graph.py",
+      "source_location": "L56",
+      "weight": 0.8
+    },
+    {
+      "source": "continue_plan_rationale_35",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\nodes\\continue_plan.py",
+      "source_location": "L28",
+      "weight": 0.8
+    },
+    {
+      "source": "critic_rationale_67",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\nodes\\critic.py",
+      "source_location": "L35",
+      "weight": 0.8
+    },
+    {
+      "source": "executor_rationale_30",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\nodes\\executor.py",
+      "source_location": "L25",
+      "weight": 0.8
+    },
+    {
+      "source": "planner_plannerdecision",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L36",
+      "weight": 0.8
+    },
+    {
+      "source": "planner_rationale_180",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\nodes\\planner.py",
+      "source_location": "L36",
+      "weight": 0.8
+    },
+    {
+      "source": "reflector_rationale_45",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L37",
+      "weight": 0.8
+    },
+    {
+      "source": "reflector_rationale_70",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L37",
+      "weight": 0.8
+    },
+    {
+      "source": "reflector_rationale_85",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L37",
+      "weight": 0.8
+    },
+    {
+      "source": "reflector_rationale_99",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L37",
+      "weight": 0.8
+    },
+    {
+      "source": "reflector_rationale_106",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L37",
+      "weight": 0.8
+    },
+    {
+      "source": "reflector_rationale_125",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\nodes\\reflector.py",
+      "source_location": "L37",
+      "weight": 0.8
+    },
+    {
+      "source": "synthesizer_rationale_201",
+      "target": "state_agentstate",
+      "relation": "uses",
+      "confidence": "INFERRED",
+      "source_file": "backend\\agents\\nodes\\synthesizer.py",
+      "source_location": "L45",
+      "weight": 0.8
+    },
+    {
+      "source": "main_get_sessions",
+      "target": "session_manager_sessionmanager_get_all_sessions",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "main_upload_dataset",
+      "target": "session_manager_sessionmanager_get_session",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L70",
+      "weight": 1.0
+    },
+    {
+      "source": "main_upload_dataset",
+      "target": "profiling_extract_metadata",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L86",
+      "weight": 1.0
+    },
+    {
+      "source": "main_upload_dataset",
+      "target": "data_quality_analyze_data_quality",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "main_get_full_analysis",
+      "target": "session_manager_sessionmanager_get_session",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "main_get_full_analysis",
+      "target": "eda_run_full_analysis",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L117",
+      "weight": 1.0
+    },
+    {
+      "source": "main_cleaning",
+      "target": "session_manager_sessionmanager_get_session",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L132",
+      "weight": 1.0
+    },
+    {
+      "source": "main_cleaning",
+      "target": "data_cleaning_generate_cleaning_action_report",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L144",
+      "weight": 1.0
+    },
+    {
+      "source": "main_cleaning",
+      "target": "apply_cleaning_apply_cleaning",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L145",
+      "weight": 1.0
+    },
+    {
+      "source": "main_cleaning",
+      "target": "profiling_extract_metadata",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L148",
+      "weight": 1.0
+    },
+    {
+      "source": "main_cleaning",
+      "target": "data_quality_analyze_data_quality",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L149",
+      "weight": 1.0
+    },
+    {
+      "source": "main_modeling",
+      "target": "session_manager_sessionmanager_get_session",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L170",
+      "weight": 1.0
+    },
+    {
+      "source": "main_modeling",
+      "target": "modeling_run_modeling",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L186",
+      "weight": 1.0
+    },
+    {
+      "source": "main_chat",
+      "target": "session_manager_sessionmanager_get_session",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L267",
+      "weight": 1.0
+    },
+    {
+      "source": "main_chat",
+      "target": "graph_get_thread_config",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L271",
+      "weight": 1.0
+    },
+    {
+      "source": "main_chat",
+      "target": "graph_create_followup_state",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L278",
+      "weight": 1.0
+    },
+    {
+      "source": "main_chat",
+      "target": "graph_create_initial_state",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L283",
+      "weight": 1.0
+    },
+    {
+      "source": "main_chat_confirm",
+      "target": "graph_get_thread_config",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\main.py",
+      "source_location": "L362",
+      "weight": 1.0
+    },
+    {
+      "source": "critic_critic_node",
+      "target": "session_manager_sessionmanager_get_session",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\agents\\nodes\\critic.py",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "eda_select_columns",
+      "target": "llm_insights_get_llm_target_selection",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L85",
+      "weight": 1.0
+    },
+    {
+      "source": "eda_run_full_analysis",
+      "target": "insights_generate_all_insights",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\tools\\eda.py",
+      "source_location": "L340",
+      "weight": 1.0
+    },
+    {
+      "source": "insights_generate_all_insights",
+      "target": "llm_insights_get_llm_insights",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\tools\\insights.py",
+      "source_location": "L360",
+      "weight": 1.0
+    },
+    {
+      "source": "proactive_analyzer_collect_proactive_data",
+      "target": "code_executor_run_query",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\tools\\proactive_analyzer.py",
+      "source_location": "L118",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_profile_dataset",
+      "target": "session_manager_sessionmanager_get_session",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_profile_dataset",
+      "target": "eda_run_full_analysis",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_clean_dataset",
+      "target": "session_manager_sessionmanager_get_session",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L79",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_clean_dataset",
+      "target": "data_cleaning_generate_cleaning_action_report",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_clean_dataset",
+      "target": "apply_cleaning_apply_cleaning",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L90",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_clean_dataset",
+      "target": "profiling_extract_metadata",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_clean_dataset",
+      "target": "data_quality_analyze_data_quality",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L94",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_run_automl_tool",
+      "target": "session_manager_sessionmanager_get_session",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_run_automl_tool",
+      "target": "modeling_run_modeling",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L129",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_predict_instance",
+      "target": "session_manager_sessionmanager_get_session",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L162",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_compare_pre_post_clean",
+      "target": "session_manager_sessionmanager_get_session",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L225",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_execute_query_tool",
+      "target": "session_manager_sessionmanager_get_session",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L267",
+      "weight": 1.0
+    },
+    {
+      "source": "wrapper_execute_query_tool",
+      "target": "code_executor_run_query",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend\\tools\\wrapper.py",
+      "source_location": "L271",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

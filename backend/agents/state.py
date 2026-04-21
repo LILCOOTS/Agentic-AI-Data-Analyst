@@ -72,6 +72,13 @@ class AgentState(TypedDict):
     # proceed to Executor or redirect to Synthesizer with a "cancelled" message.
     confirmed: bool
 
+    # ── Multi-Step Planning (written by Planner, consumed by ContinuePlan) ──────
+    # plan_steps holds the REMAINING actions after the current one starts.
+    # Planner populates this when user says "clean and train" or "prepare and model".
+    # ContinuePlan pops from it after each step completes.
+    # When empty, Synthesizer routes to END instead of looping.
+    plan_steps: list
+
     # ── Response (written by Synthesizer) ─────────────────────────────────────
     # final_response is the markdown string streamed back to the chat panel
     final_response: Optional[str]

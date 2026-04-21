@@ -1,0 +1,402 @@
+{
+  "nodes": [
+    {
+      "id": "agentic_upgrade_ideas",
+      "label": "Agentic Upgrade Ideas Roadmap",
+      "file_type": "document",
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "execute_code_engine",
+      "label": "execute_code Sandbox Engine",
+      "file_type": "document",
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "multi_step_planning",
+      "label": "Multi-Step Autonomous Planning",
+      "file_type": "document",
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "proactive_analysis_feature",
+      "label": "Proactive Analysis Feature",
+      "file_type": "document",
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "counterfactual_whatif",
+      "label": "Counterfactual What-If Analysis",
+      "file_type": "document",
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "ai_graph_explanations",
+      "label": "AI Graph Explanations Feature",
+      "file_type": "document",
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "planner_plannerdecision",
+      "label": "PlannerDecision Schema",
+      "file_type": "code",
+      "source_file": "backend/agents/nodes/planner.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "planner_planner_node",
+      "label": "planner_node Function",
+      "file_type": "code",
+      "source_file": "backend/agents/nodes/planner.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "planner_build_system_prompt",
+      "label": "build_system_prompt Function",
+      "file_type": "code",
+      "source_file": "backend/agents/nodes/planner.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "synthesizer_synthesizer_node",
+      "label": "synthesizer_node Function",
+      "file_type": "code",
+      "source_file": "backend/agents/nodes/synthesizer.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "synthesizer_formatters",
+      "label": "FORMATTERS Registry",
+      "file_type": "code",
+      "source_file": "backend/agents/nodes/synthesizer.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "synthesizer_format_query_result",
+      "label": "_format_query_result Function",
+      "file_type": "code",
+      "source_file": "backend/agents/nodes/synthesizer.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "main_chat_endpoint",
+      "label": "/chat SSE Endpoint",
+      "file_type": "code",
+      "source_file": "backend/main.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "main_upload_endpoint",
+      "label": "/upload_dataset Endpoint",
+      "file_type": "code",
+      "source_file": "backend/main.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "main_confirm_endpoint",
+      "label": "/chat/confirm Endpoint",
+      "file_type": "code",
+      "source_file": "backend/main.py",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "frontend_dashboard",
+      "label": "Dashboard Frontend UI",
+      "file_type": "code",
+      "source_file": "backend/templates/index.html",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "hitl_confirmation_gate",
+      "label": "Human-in-the-Loop Confirmation Gate",
+      "file_type": "document",
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    },
+    {
+      "id": "query_action",
+      "label": "query Action Type",
+      "file_type": "document",
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null
+    }
+  ],
+  "edges": [
+    {
+      "source": "multi_step_planning",
+      "target": "planner_plannerdecision",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "execute_code_engine",
+      "target": "query_action",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "query_action",
+      "target": "synthesizer_format_query_result",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.9,
+      "source_file": "backend/agents/nodes/synthesizer.py",
+      "source_location": null,
+      "weight": 0.9
+    },
+    {
+      "source": "planner_planner_node",
+      "target": "planner_build_system_prompt",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/agents/nodes/planner.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "planner_planner_node",
+      "target": "planner_plannerdecision",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/agents/nodes/planner.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "synthesizer_synthesizer_node",
+      "target": "synthesizer_formatters",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/agents/nodes/synthesizer.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "main_chat_endpoint",
+      "target": "planner_planner_node",
+      "relation": "calls",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "backend/main.py",
+      "source_location": null,
+      "weight": 0.85
+    },
+    {
+      "source": "main_confirm_endpoint",
+      "target": "hitl_confirmation_gate",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/main.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "frontend_dashboard",
+      "target": "main_chat_endpoint",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/templates/index.html",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "hitl_confirmation_gate",
+      "target": "main_confirm_endpoint",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "proactive_analysis_feature",
+      "target": "main_upload_endpoint",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "weight": 0.8
+    },
+    {
+      "source": "agentic_upgrade_ideas",
+      "target": "execute_code_engine",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agentic_upgrade_ideas",
+      "target": "multi_step_planning",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agentic_upgrade_ideas",
+      "target": "proactive_analysis_feature",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agentic_upgrade_ideas",
+      "target": "counterfactual_whatif",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "agentic_upgrade_ideas",
+      "target": "ai_graph_explanations",
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "synthesizer_format_query_result",
+      "target": "synthesizer_formatters",
+      "relation": "implements",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "backend/agents/nodes/synthesizer.py",
+      "source_location": null,
+      "weight": 1.0
+    },
+    {
+      "source": "multi_step_planning",
+      "target": "hitl_confirmation_gate",
+      "relation": "conceptually_related_to",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md",
+      "source_location": null,
+      "weight": 0.85
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "agentic_pipeline",
+      "label": "Full Agentic Pipeline",
+      "nodes": [
+        "planner_planner_node",
+        "synthesizer_synthesizer_node",
+        "hitl_confirmation_gate",
+        "main_chat_endpoint"
+      ],
+      "relation": "form",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "source_file": "AGENTIC_UPGRADE_IDEAS.md"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

@@ -54,11 +54,12 @@ from langgraph.graph import StateGraph, START, END
 from langgraph.checkpoint.memory import MemorySaver
 
 from agents.state import AgentState
-from agents.nodes.planner    import planner_node
-from agents.nodes.critic     import critic_node
-from agents.nodes.executor   import executor_node
-from agents.nodes.reflector  import reflector_node
-from agents.nodes.synthesizer import synthesizer_node
+from agents.nodes.planner       import planner_node
+from agents.nodes.critic        import critic_node
+from agents.nodes.executor      import executor_node
+from agents.nodes.reflector     import reflector_node
+from agents.nodes.synthesizer   import synthesizer_node
+from agents.nodes.continue_plan import continue_plan_node
 
 
 # ── Routing Functions ─────────────────────────────────────────────────────────
@@ -93,6 +94,19 @@ def route_after_reflector(state: AgentState) -> str:
     return "executor"   # ← This is the CYCLE — what makes it a graph, not a chain
 
 
+def route_after_synthesizer(state: AgentState) -> str:
+    """
+    After Synthesizer runs:
+    - If plan_steps is non-empty → ContinuePlan (advance multi-step pipeline).
+    - Otherwise → END (conversation turn complete).
+    """
+    remaining = state.get("plan_steps") or []
+    if remaining:
+        print(f"[Router] Plan has {len(remaining)} step(s) remaining — continuing.")
+        return "continue_plan"
+    return END
+
+
 # ── Graph Builder ─────────────────────────────────────────────────────────────
 
 def build_graph() -> tuple:
@@ -110,17 +124,18 @@ def build_graph() -> tuple:
     builder = StateGraph(AgentState)
 
     # Register every node — name (str) + function
-    builder.add_node("planner",     planner_node)
-    builder.add_node("critic",      critic_node)
-    builder.add_node("executor",    executor_node)
-    builder.add_node("reflector",   reflector_node)
-    builder.add_node("synthesizer", synthesizer_node)
+    builder.add_node("planner",       planner_node)
+    builder.add_node("critic",        critic_node)
+    builder.add_node("executor",      executor_node)
+    builder.add_node("reflector",     reflector_node)
+    builder.add_node("synthesizer",   synthesizer_node)
+    builder.add_node("continue_plan", continue_plan_node)   # ⭐ multi-step
 
-    # ── Fixed Edges ────────────────────────────────────────────────────────────
-    builder.add_edge(START,        "planner")     # every invocation starts at Planner
-    builder.add_edge("planner",    "critic")      # Planner always goes to Critic
-    builder.add_edge("executor",   "reflector")   # Executor always goes to Reflector
-    builder.add_edge("synthesizer", END)          # Synthesizer always ends the graph
+    # ── Fixed Edges ──────────────────────────────────────────────────────
+    builder.add_edge(START,           "planner")    # every invocation starts at Planner
+    builder.add_edge("planner",       "critic")     # Planner always goes to Critic
+    builder.add_edge("executor",      "reflector")  # Executor always goes to Reflector
+    builder.add_edge("continue_plan", "critic")     # after advancing, go back to Critic
 
     # ── Conditional Edges ──────────────────────────────────────────────────────
     # Critic → Executor or Synthesizer
@@ -140,6 +155,16 @@ def build_graph() -> tuple:
         {
             "executor":    "executor",    # ← loop back
             "synthesizer": "synthesizer",
+        }
+    )
+
+    # Synthesizer → END or ContinuePlan (the multi-step LOOP)
+    builder.add_conditional_edges(
+        "synthesizer",
+        route_after_synthesizer,
+        {
+            "continue_plan": "continue_plan",   # ← advance to next plan step
+            END:              END,
         }
     )
 
@@ -198,6 +223,7 @@ def create_initial_state(
         "retry_count":      0,
         "confirmed":        False,
         "final_response":   None,
+        "plan_steps":       [],
     }
 
 
@@ -219,4 +245,5 @@ def create_followup_state(user_message: str) -> dict:
         "retry_count":       0,
         "confirmed":         False,
         "final_response":    None,
+        "plan_steps":        [],
     }
